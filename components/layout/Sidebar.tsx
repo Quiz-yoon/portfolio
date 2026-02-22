@@ -38,7 +38,7 @@ export default function Sidebar() {
     };
   }, [mobileOpen]);
 
-  // Auto-expand parent menu on work pages
+  // Sync active state with pathname
   useEffect(() => {
     if (currentSlug) {
       setActive(currentSlug);
@@ -48,8 +48,13 @@ export default function Sidebar() {
       if (parent) {
         setExpanded({ [parent.id]: true });
       }
+    } else if (pathname === "/about") {
+      setActive("about");
+    } else if (pathname.startsWith("/")) {
+      const segment = pathname.replace("/", "");
+      if (segment) setActive(segment);
     }
-  }, [currentSlug]);
+  }, [currentSlug, pathname]);
 
   useEffect(() => {
     if (isWorkPage) return;
@@ -113,7 +118,7 @@ export default function Sidebar() {
         />
       )}
 
-      <aside className={`fixed left-0 top-0 z-40 flex h-screen w-[250px] flex-col bg-[#F7F7FA] p-4 text-[#8E8E93] transition-transform duration-300 ease-in-out ${mobileOpen ? "translate-x-0" : "-translate-x-full"} md:z-10 md:translate-x-0`}>
+      <aside className={`fixed left-0 top-0 z-40 flex h-screen w-[250px] flex-col bg-[#F7F7FA] px-4 pt-6 pb-4 text-[#8E8E93] transition-transform duration-300 ease-in-out ${mobileOpen ? "translate-x-0" : "-translate-x-full"} md:z-10 md:translate-x-0`}>
       {/* Close button — mobile only */}
       <button
         onClick={closeMobile}
@@ -123,32 +128,45 @@ export default function Sidebar() {
         <X size={18} className="text-[#8E8E93]" />
       </button>
 
+      {/* Scrollable menu area */}
+      <div className="flex-1 overflow-y-auto">
       {/* Name */}
-      <div className="px-3">
+      <div className="flex items-center gap-2 px-3">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/profile.png"
+          alt={sidebarData.name}
+          className="h-[40px] w-[40px] rounded-full border border-[#E5E5EA] object-cover"
+        />
         <span className="text-[16px] font-semibold text-[#1C1C1E]">
           {sidebarData.name}
         </span>
       </div>
 
-      {/* About */}
-      <Link
-        href="/about"
-        onClick={() => {
-          setActive("about");
-          setExpanded({});
-          closeMobile();
-        }}
-        className={`mt-5 ${linkBase} ${active === "about" || pathname === "/about" ? linkActive : linkDefault}`}
-      >
-        About
-      </Link>
+      {/* Information */}
+      <div className="mt-8">
+        <p className="px-3 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
+          Information
+        </p>
+        <button
+          onClick={() => {
+            setActive("about");
+            setExpanded({});
+            router.push("/about");
+            closeMobile();
+          }}
+          className={`mt-2 w-full text-left ${linkBase} ${active === "about" ? linkActive : linkDefault}`}
+        >
+          About
+        </button>
+      </div>
 
       {/* Projects */}
       <div className="mt-7">
         <p className="px-3 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Projects
         </p>
-        <nav className="mt-3 flex flex-col gap-0.5">
+        <nav className="mt-2 flex flex-col gap-0.5">
           {sidebarData.projects.map((project) =>
             project.children ? (
               <div key={project.id}>
@@ -164,7 +182,7 @@ export default function Sidebar() {
                       closeMobile();
                     }
                   }}
-                  className={`${linkBase} w-full justify-between ${project.children?.some((c) => c.id === active || c.id === currentSlug) ? linkActive : linkDefault}`}
+                  className={`${linkBase} w-full justify-between ${project.children?.some((c) => c.id === active) ? linkActive : linkDefault}`}
                 >
                   {project.name}
                   <span className="flex h-[20px] min-w-[20px] items-center justify-center rounded-[4px] bg-[#EBEBF0] text-[11px] font-medium text-current">{project.children.length}</span>
@@ -181,7 +199,7 @@ export default function Sidebar() {
                       key={child.id}
                       href={`/work/${child.id}`}
                       onClick={() => { setActive(child.id); closeMobile(); }}
-                      className={`flex items-center border-l-2 py-2 pl-4 pr-3 text-[13.5px] transition-colors duration-150 ${active === child.id || currentSlug === child.id ? "border-[#1C1C1E] text-[#1C1C1E]" : "border-[#D1D1D6] text-[#AEAEB2] hover:text-[#1C1C1E]"}`}
+                      className={`flex items-center border-l-2 py-2 pl-4 pr-3 text-[13.5px] transition-colors duration-150 ${active === child.id ? "border-[#1C1C1E] text-[#1C1C1E]" : "border-[#D1D1D6] text-[#AEAEB2] hover:text-[#1C1C1E]"}`}
                     >
                       {child.name}
                     </Link>
@@ -197,7 +215,7 @@ export default function Sidebar() {
                   setExpanded({});
                   closeMobile();
                 }}
-                className={`${linkBase} justify-between ${active === project.id || currentSlug === project.id ? linkActive : linkDefault}`}
+                className={`${linkBase} justify-between ${active === project.id ? linkActive : linkDefault}`}
               >
                 {project.name}
                 <span className="flex h-[20px] min-w-[20px] items-center justify-center rounded-[4px] bg-[#EBEBF0] text-[11px] font-medium text-current">1</span>
@@ -205,6 +223,7 @@ export default function Sidebar() {
             ),
           )}
         </nav>
+
       </div>
 
       {/* Design Engineering */}
@@ -212,7 +231,7 @@ export default function Sidebar() {
         <p className="px-3 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Design Engineering
         </p>
-        <nav className="mt-3 flex flex-col gap-0.5">
+        <nav className="mt-2 flex flex-col gap-0.5">
           {sidebarData.designEngineering.map((item) => (
             <Link
               key={item.id}
@@ -222,7 +241,7 @@ export default function Sidebar() {
                 setExpanded({});
                 closeMobile();
               }}
-              className={`${linkBase} ${active === item.id || pathname === `/${item.id}` ? linkActive : linkDefault}`}
+              className={`${linkBase} ${active === item.id ? linkActive : linkDefault}`}
             >
               {item.name}
             </Link>
@@ -235,7 +254,7 @@ export default function Sidebar() {
         <p className="px-3 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Contact
         </p>
-        <nav className="mt-3 flex flex-col gap-0.5">
+        <nav className="mt-2 flex flex-col gap-0.5">
           {sidebarData.contact.map((item) => (
             <a
               key={item.name}
@@ -250,9 +269,10 @@ export default function Sidebar() {
           ))}
         </nav>
       </div>
+      </div>
 
-      {/* Language Toggle */}
-      <div className="mt-auto px-3 pb-2">
+      {/* Language Toggle — fixed bottom */}
+      <div className="flex-shrink-0 px-3 pb-2 pt-2">
         <div className="flex h-[36px] rounded-lg bg-[#EBEBF0] p-[3px]">
           <button
             onClick={() => locale !== "ko" && toggleLocale()}
