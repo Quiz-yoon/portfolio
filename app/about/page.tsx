@@ -62,22 +62,9 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Currently Exploring */}
-        <section className="mt-14">
-          <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
-            Currently Exploring
-          </p>
-          <p className="mt-4 text-[14px] text-[#48484A]">
-            {currentlyExploring}
-          </p>
-        </section>
-
         {/* Experience */}
         <section className="mt-14">
-          <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
-            Experience
-          </p>
-          <div className="mt-4 flex flex-col">
+          <div className="flex flex-col">
             {experienceData.map((exp) => (
               <div
                 key={exp.id}
@@ -128,50 +115,6 @@ export default function AboutPage() {
           </div>
         </section>
 
-        {/* Education + Languages */}
-        <section className="mt-14">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-            <div>
-              <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
-                Education
-              </p>
-              <div className="mt-4">
-                <p className="text-[14px] font-medium text-[#1C1C1E]">
-                  {locale === "ko"
-                    ? aboutData.education.school
-                    : aboutData.education.schoolEn}
-                </p>
-                {(locale === "ko" ? aboutData.education.major : aboutData.education.majorEn) && (
-                  <p className="mt-1 text-[13px] text-[#8E8E93]">
-                    {locale === "ko"
-                      ? aboutData.education.major
-                      : aboutData.education.majorEn}
-                  </p>
-                )}
-                <p className="mt-1 text-[12px] text-[#AEAEB2]">
-                  {aboutData.education.period}
-                </p>
-              </div>
-            </div>
-            <div>
-              <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
-                Languages
-              </p>
-              <div className="mt-4 flex flex-col gap-2">
-                {aboutData.languages.map((l) => (
-                  <div key={l.lang} className="flex items-baseline gap-2">
-                    <span className="text-[14px] font-medium text-[#1C1C1E]">
-                      {locale === "ko" ? l.lang : l.langEn}
-                    </span>
-                    <span className="text-[13px] text-[#8E8E93]">
-                      {locale === "ko" ? l.level : l.levelEn}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </section>
 
 
       </div>

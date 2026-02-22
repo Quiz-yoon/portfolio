@@ -35,13 +35,13 @@ that has been my primary focus.`,
     "글로벌 유저의 맥락 차이와 현지화 UX 전략",
     "데이터 기반 의사결정과 A/B 테스트 설계",
     "팀 생산성을 높이는 디자인 시스템 구축",
-    "0→1 프로덕트의 불확실성 속 빠른 실험과 학습",
+    "Zero to One 프로덕트의 불확실성 속 빠른 실험과 학습",
   ],
   interestsEn: [
     "Localization UX strategies for global user contexts",
     "Data-driven decision-making and A/B test design",
     "Building design systems that boost team productivity",
-    "Rapid experimentation and learning in 0→1 products",
+    "Rapid experimentation and learning in Zero to One products",
   ],
   education: {
     school: "서울예술대학교 시각디자인과 전문학사 졸업",
@@ -76,11 +76,11 @@ export const experienceData: Experience[] = [
     location: "Bundang, Korea",
 
     description:
-      "대만·태국 Giftshop의 UX 기획 및 UI 디자인 전담. 데이터 기반 UX 개선과 디자인 시스템(RDSG) 구축을 주도했으며, 글로벌 팀과 협업해 현지화 UX 전략을 실행했습니다.",
+      "대만·태국 Giftshop UX 기획 및 UI 디자인 전담. 데이터 기반 UX 개선과 디자인 시스템(RDSG) 구축 주도, 글로벌 팀과 협업해 현지화 UX 전략 실행",
     descriptionEn:
       "Led UX planning and UI design for Taiwan & Thailand Giftshop. Drove data-driven UX improvements and design system (RDSG) development, executing localization UX strategies with global teams.",
     highlights: [
-      "좀탭 개선 → 이탈률 감소, CTR 상승, 주문 증가",
+      "홈탭 개선 → 이탈률 감소, CTR 상승, 주문 증가",
       "태국 Giftshop 현지화 → 공식 런칭 완료",
       "선물 플로우 개선 → 리딤률 증가, 이탈률 감소",
       "신규 유저 쿠폰 캠페인 → CVR 개선",
@@ -104,9 +104,9 @@ export const experienceData: Experience[] = [
     location: "Seoul, Korea",
 
     description:
-      "홈트레이닝 앱 0→1 설계 및 런칭 전 과정 담당. 사용자 리서치와 데이터 분석 기반으로 소셜 기능 및 디자인 시스템을 구축했습니다.",
+      "홈트레이닝 앱 Zero to One 설계 및 런칭 전 과정 담당. 사용자 리서치와 데이터 분석 기반 소셜 기능 및 디자인 시스템 구축",
     descriptionEn:
-      "Owned the full 0→1 design and launch of a home training app. Built social features and design system based on user research and data analysis.",
+      "Owned the full Zero to One design and launch of a home training app. Built social features and design system based on user research and data analysis.",
     highlights: [
       "피트니스 앱 런칭 → 앱스토어 높은 평점 달성",
       "소셜 기능 도입 → 리텐션 대폭 증가",
@@ -120,7 +120,7 @@ export const experienceData: Experience[] = [
       "Design system → UI/UX consistency maintained through scaling",
     ],
     caseStudySlug: null,
-    tags: ["0→1", "B2C", "Design System", "iOS/Android"],
+    tags: ["Zero to One", "B2C", "Design System", "iOS/Android"],
   },
   {
     id: "styleshare",
@@ -130,7 +130,7 @@ export const experienceData: Experience[] = [
     location: "Seoul, Korea",
 
     description:
-      "앱 퍼널 UX 기획 및 UI 디자인. 데이터 기반 퍼널 분석과 A/B 테스트 반복 수행으로 구매 전환율과 리텐션을 개선했습니다.",
+      "앱 퍼널 UX 기획 및 UI 디자인. 데이터 기반 퍼널 분석과 A/B 테스트 반복 수행으로 구매 전환율과 리텐션 개선",
     descriptionEn:
       "App funnel UX planning and UI design. Improved purchase conversion and retention through data-driven funnel analysis and iterative A/B testing.",
     highlights: [
@@ -152,7 +152,7 @@ export const experienceData: Experience[] = [
     location: "Seoul, Korea",
 
     description:
-      "맞춤형 상품 추천 UX 설계 (사용자 설문 기반). 한국 지사 검증 후 미국 본사 서비스에 적용, 매출 약 3배 증가에 기여했습니다.",
+      "맞춤형 상품 추천 UX 설계 (사용자 설문 기반). 한국 지사 검증 후 미국 본사 서비스에 적용, 매출 대폭 증가에 기여",
     descriptionEn:
       "Designed personalized product recommendation UX (survey-based). Validated at Korea office, then applied to US headquarters service, contributing to ~3x revenue increase.",
     highlights: [
@@ -174,7 +174,7 @@ export const experienceData: Experience[] = [
     location: "Seoul, Korea",
 
     description:
-      "교육 플랫폼 UX 기획 및 캠페인 실험 설계. 마케팅 팀과 협업해 A/B 테스트를 통한 최적 UI/카피 조합을 도출했습니다.",
+      "교육 플랫폼 UX 기획 및 캠페인 실험 설계. 마케팅 팀과 협업해 A/B 테스트를 통한 최적 UI/카피 조합 도출",
     descriptionEn:
       "EdTech platform UX planning and campaign experiment design. Collaborated with marketing team to derive optimal UI/copy combinations through A/B testing.",
     highlights: [
@@ -212,7 +212,7 @@ export const experienceData: Experience[] = [
     location: "New York, USA",
 
     description:
-      "뉴욕 소재 SB Groupe에서 콘텐츠 및 UI 디자인, 영상 촬영·편집, 브랜드 캠페인 지원. 글로벌 환경에서의 협업 경험을 쌓았습니다.",
+      "뉴욕 소재 SB Groupe에서 콘텐츠 및 UI 디자인, 영상 촬영·편집, 브랜드 캠페인 지원. 글로벌 환경에서의 협업 경험",
     descriptionEn:
       "Content and UI design, video production and editing, and brand campaign support at SB Groupe in New York. Gained experience collaborating in a global environment.",
     highlights: [],
