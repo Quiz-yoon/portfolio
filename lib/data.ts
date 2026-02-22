@@ -4,6 +4,7 @@ export interface Experience {
   company: string;
   role: string;
   period: string;
+  location: string;
   description: string;
   descriptionEn: string;
   highlights: string[];
@@ -43,10 +44,10 @@ that has been my primary focus.`,
     "Rapid experimentation and learning in 0→1 products",
   ],
   education: {
-    school: "서울예술대학교",
-    schoolEn: "Seoul Institute of the Arts",
-    major: "시각디자인 학사",
-    majorEn: "B.A. in Visual Design",
+    school: "서울예술대학교 시각디자인과 전문학사 졸업",
+    schoolEn: "Seoul Institute of the Arts, A.A. in Visual Design",
+    major: "",
+    majorEn: "",
     period: "2009 – 2014",
   },
   languages: [
@@ -72,24 +73,25 @@ export const experienceData: Experience[] = [
     company: "LINE Plus Corp",
     role: "Product Designer",
     period: "2021.10 – Present",
+    location: "Bundang, Korea",
 
     description:
       "대만·태국 Giftshop의 UX 기획 및 UI 디자인 전담. 데이터 기반 UX 개선과 디자인 시스템(RDSG) 구축을 주도했으며, 글로벌 팀과 협업해 현지화 UX 전략을 실행했습니다.",
     descriptionEn:
       "Led UX planning and UI design for Taiwan & Thailand Giftshop. Drove data-driven UX improvements and design system (RDSG) development, executing localization UX strategies with global teams.",
     highlights: [
-      "좀탭 개선 → 이탈률 3%p 감소, CTR 3%p 이상 상승, 주문 15% 증가",
-      "태국 Giftshop 현지화 → 2025년 8월 공식 런칭 완료",
-      "선물 플로우 개선 → 리딤률 7%p 증가, 이탈률 2%p 감소",
-      "신규 유저 쿠폰 캠페인 → 탭입 CVR 최대 17% 기록",
-      "디자인 시스템(RDSG) → UI 일관성 확보, 팀 생산성 +30% 향상",
+      "좀탭 개선 → 이탈률 감소, CTR 상승, 주문 증가",
+      "태국 Giftshop 현지화 → 공식 런칭 완료",
+      "선물 플로우 개선 → 리딤률 증가, 이탈률 감소",
+      "신규 유저 쿠폰 캠페인 → CVR 개선",
+      "디자인 시스템(RDSG) → UI 일관성 확보, 팀 생산성 향상",
     ],
     highlightsEn: [
-      "Home tab redesign → bounce rate -3%p, CTR +3%p, orders +15%",
-      "Thailand Giftshop localization → official launch Aug 2025",
-      "Gift flow improvement → redeem rate +7%p, bounce rate -2%p",
-      "New user coupon campaign → tap-in CVR up to 17%",
-      "Design system (RDSG) → UI consistency, team productivity +30%",
+      "Home tab redesign → reduced bounce rate, increased CTR and orders",
+      "Thailand Giftshop localization → official launch completed",
+      "Gift flow improvement → increased redeem rate, reduced bounce rate",
+      "New user coupon campaign → improved CVR",
+      "Design system (RDSG) → UI consistency, improved team productivity",
     ],
     caseStudySlug: null,
     tags: ["E-commerce", "Design System", "Localization", "B2C"],
@@ -99,21 +101,22 @@ export const experienceData: Experience[] = [
     company: "Bunkerkids",
     role: "Product Designer",
     period: "2020.09 – 2021.09",
+    location: "Seoul, Korea",
 
     description:
       "홈트레이닝 앱 0→1 설계 및 런칭 전 과정 담당. 사용자 리서치와 데이터 분석 기반으로 소셜 기능 및 디자인 시스템을 구축했습니다.",
     descriptionEn:
       "Owned the full 0→1 design and launch of a home training app. Built social features and design system based on user research and data analysis.",
     highlights: [
-      "피트니스 앱 런칭 → 앱스토어 평점 4.4 달성",
-      "소셜 기능 도입 → 리텐션 3.8배 증가 (80% vs 27%)",
-      "플랜 기능 도입 → 운동 유지율 76% (계게 유저 대비 2배 이상)",
+      "피트니스 앱 런칭 → 앱스토어 높은 평점 달성",
+      "소셜 기능 도입 → 리텐션 대폭 증가",
+      "플랜 기능 도입 → 운동 유지율 크게 향상",
       "디자인 시스템 구축 → 서비스 확장 시에도 UI/UX 일관성 확보",
     ],
     highlightsEn: [
-      "Fitness app launch → App Store rating 4.4",
-      "Social features → retention 3.8x increase (80% vs 27%)",
-      "Plan feature → workout retention 76% (2x vs non-plan users)",
+      "Fitness app launch → achieved high App Store rating",
+      "Social features → significant retention increase",
+      "Plan feature → greatly improved workout retention",
       "Design system → UI/UX consistency maintained through scaling",
     ],
     caseStudySlug: null,
@@ -124,6 +127,7 @@ export const experienceData: Experience[] = [
     company: "StyleShare",
     role: "UI/UX Designer",
     period: "2018.08 – 2021.04",
+    location: "Seoul, Korea",
 
     description:
       "앱 퍼널 UX 기획 및 UI 디자인. 데이터 기반 퍼널 분석과 A/B 테스트 반복 수행으로 구매 전환율과 리텐션을 개선했습니다.",
@@ -145,6 +149,7 @@ export const experienceData: Experience[] = [
     company: "Noom Inc.",
     role: "UI/UX Designer",
     period: "2018.07 – 2020.01",
+    location: "Seoul, Korea",
 
     description:
       "맞춤형 상품 추천 UX 설계 (사용자 설문 기반). 한국 지사 검증 후 미국 본사 서비스에 적용, 매출 약 3배 증가에 기여했습니다.",
@@ -152,11 +157,11 @@ export const experienceData: Experience[] = [
       "Designed personalized product recommendation UX (survey-based). Validated at Korea office, then applied to US headquarters service, contributing to ~3x revenue increase.",
     highlights: [
       "설문 기반 맞춤 추천 UX → 한국 지사 검증 후 미국 본사 적용",
-      "소개·판매 페이지 개선 → 매출 약 3배 증가",
+      "소개·판매 페이지 개선 → 매출 대폭 증가",
     ],
     highlightsEn: [
       "Survey-based personalized recommendation UX → validated in Korea, deployed to US HQ",
-      "Landing & sales page redesign → ~3x revenue increase",
+      "Landing & sales page redesign → significant revenue increase",
     ],
     caseStudySlug: null,
     tags: ["B2C", "Personalization", "Global"],
@@ -166,6 +171,7 @@ export const experienceData: Experience[] = [
     company: "CLASS 101",
     role: "UI/UX Designer",
     period: "2020.01 – 2020.08",
+    location: "Seoul, Korea",
 
     description:
       "교육 플랫폼 UX 기획 및 캠페인 실험 설계. 마케팅 팀과 협업해 A/B 테스트를 통한 최적 UI/카피 조합을 도출했습니다.",
@@ -187,6 +193,7 @@ export const experienceData: Experience[] = [
     company: "Graphic Studio 301",
     role: "Founder",
     period: "2015.12 – 2021.01",
+    location: "Seoul, Korea",
 
     description:
       "1인 디자인 에이전시 운영. 스타트업·중소기업 대상 브랜딩, 웹/앱 UI 디자인, 마케팅 콘텐츠 제작 등 기획~납품까지 전 과정 직접 관리.",
@@ -202,6 +209,7 @@ export const experienceData: Experience[] = [
     company: "SB GROUPE",
     role: "Graphic Designer",
     period: "2014.01 – 2014.12",
+    location: "New York, USA",
 
     description:
       "뉴욕 소재 SB Groupe에서 콘텐츠 및 UI 디자인, 영상 촬영·편집, 브랜드 캠페인 지원. 글로벌 환경에서의 협업 경험을 쌓았습니다.",

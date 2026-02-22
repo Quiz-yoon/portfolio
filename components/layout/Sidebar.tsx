@@ -162,7 +162,7 @@ export default function Sidebar() {
       </div>
 
       {/* Projects */}
-      <div className="mt-7">
+      <div className="mt-6">
         <p className="px-3 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Projects
         </p>
@@ -227,7 +227,7 @@ export default function Sidebar() {
       </div>
 
       {/* Design Engineering */}
-      <div className="mt-7">
+      <div className="mt-6">
         <p className="px-3 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Design Engineering
         </p>
@@ -250,7 +250,7 @@ export default function Sidebar() {
       </div>
 
       {/* Contact */}
-      <div className="mt-7">
+      <div className="mt-6">
         <p className="px-3 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Contact
         </p>

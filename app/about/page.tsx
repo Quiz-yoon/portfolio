@@ -81,59 +81,38 @@ export default function AboutPage() {
             {experienceData.map((exp) => (
               <div
                 key={exp.id}
-                className="border-b border-[#F2F2F7] py-5 last:border-b-0"
+                className="border-b border-[#F2F2F7] py-8 last:border-b-0"
               >
                 {/* Header: Company + Role + Period */}
-                <div className="flex items-center gap-3">
-                  <div className="flex h-[36px] w-[36px] flex-shrink-0 items-center justify-center rounded-[8px] bg-[#F2F2F7]">
-                    <span className="text-[13px] font-medium text-[#8E8E93]">
-                      {exp.company.charAt(0)}
-                    </span>
-                  </div>
-                  <div className="flex min-w-0 flex-1 items-baseline justify-between gap-2">
-                    <div className="min-w-0">
-                      <span className="text-[14px] font-medium text-[#1C1C1E]">
-                        {exp.company}
-                      </span>
-                      <span className="ml-2 text-[13px] text-[#8E8E93]">
-                        {exp.role}
-                      </span>
-                    </div>
-                    <span className="flex-shrink-0 text-[12px] text-[#AEAEB2]">
-                      {exp.period}
-                    </span>
-                  </div>
+                <div>
+                  <p className="text-[16px] font-medium text-[#1C1C1E]">
+                    {exp.company}
+                  </p>
+                  <p className="mt-1 text-[13px] text-[#8E8E93]">
+                    {exp.period} · {exp.location}
+                  </p>
                 </div>
 
                 {/* Description + Highlights + Tags */}
-                <div className="mt-3 pl-0 md:pl-[48px]">
-                  <p className="text-[13.5px] leading-[1.75] text-[#48484A]">
+                <div className="mt-4">
+                  <p className="text-[14px] font-medium text-[#1C1C1E]">
+                    {exp.role}
+                  </p>
+                  <p className="mt-1.5 text-[13px] leading-[1.75] text-[#8E8E93]">
                     {locale === "ko" ? exp.description : exp.descriptionEn}
                   </p>
                   {(locale === "ko" ? exp.highlights : exp.highlightsEn).length > 0 && (
-                    <ul className="mt-3 flex flex-col gap-1.5">
+                    <ul className="mt-1.5 flex flex-col gap-1.5">
                       {(locale === "ko" ? exp.highlights : exp.highlightsEn).map((h, i) => (
                         <li
                           key={i}
-                          className="text-[13px] leading-[1.6] text-[#8E8E93]"
+                          className="text-[13px] leading-[1.4] text-[#8E8E93]"
                         >
-                          <span className="mr-1.5 text-[#D1D1D6]">·</span>
+                          <span className="mr-1.5 text-[#8E8E93]">•</span>
                           {h}
                         </li>
                       ))}
                     </ul>
-                  )}
-                  {exp.tags.length > 0 && (
-                    <div className="mt-3 flex flex-wrap gap-1.5">
-                      {exp.tags.map((tag) => (
-                        <span
-                          key={tag}
-                          className="rounded-full bg-[#EFF6FF] px-2 py-0.5 text-[11px] font-medium text-[#2563EB]"
-                        >
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
                   )}
                   {exp.caseStudySlug && (
                     <a
@@ -162,11 +141,13 @@ export default function AboutPage() {
                     ? aboutData.education.school
                     : aboutData.education.schoolEn}
                 </p>
-                <p className="mt-1 text-[13px] text-[#8E8E93]">
-                  {locale === "ko"
-                    ? aboutData.education.major
-                    : aboutData.education.majorEn}
-                </p>
+                {(locale === "ko" ? aboutData.education.major : aboutData.education.majorEn) && (
+                  <p className="mt-1 text-[13px] text-[#8E8E93]">
+                    {locale === "ko"
+                      ? aboutData.education.major
+                      : aboutData.education.majorEn}
+                  </p>
+                )}
                 <p className="mt-1 text-[12px] text-[#AEAEB2]">
                   {aboutData.education.period}
                 </p>
