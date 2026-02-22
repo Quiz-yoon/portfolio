@@ -261,10 +261,10 @@ export default function Sidebar() {
               href={item.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`${linkBase} justify-between ${linkDefault}`}
+              className={`group ${linkBase} justify-between ${linkDefault}`}
             >
               {item.name}
-              <ArrowUpRight size={14} className="text-[#C7C7CC]" />
+              <ArrowUpRight size={14} className="text-[#C7C7CC] transition-colors duration-150 group-hover:text-[#1C1C1E]" />
             </a>
           ))}
         </nav>
