@@ -12,5 +12,5 @@ export async function POST(request: Request) {
     return NextResponse.json({ success: true });
   }
 
-  return NextResponse.json({ success: false, message: "Incorrect password", debug: { envLength: correct?.length, inputLength: password?.length } });
+  return NextResponse.json({ success: false, message: "Incorrect password" });
 }
