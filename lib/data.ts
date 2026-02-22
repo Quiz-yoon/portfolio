@@ -10,6 +10,7 @@ export interface Experience {
   highlights: string[];
   highlightsEn: string[];
   caseStudySlug: string | null;
+  logo: string | null;
   tags: string[];
 }
 
@@ -94,6 +95,7 @@ export const experienceData: Experience[] = [
       "Design system (RDSG) → UI consistency, improved team productivity",
     ],
     caseStudySlug: "wishlist-optimization",
+    logo: "/images/line.png",
     tags: ["E-commerce", "Design System", "Localization", "B2C"],
   },
   {
@@ -120,6 +122,7 @@ export const experienceData: Experience[] = [
       "Design system → UI/UX consistency maintained through scaling",
     ],
     caseStudySlug: "bunker-kids",
+    logo: "/images/bunkerkids.png",
     tags: ["Zero to One", "B2C", "Design System", "iOS/Android"],
   },
   {
@@ -142,6 +145,7 @@ export const experienceData: Experience[] = [
       "New user onboarding improvement → reduced early-stage drop-off",
     ],
     caseStudySlug: "styleshare",
+    logo: "/images/styleshare.jpeg",
     tags: ["B2C", "E-commerce", "A/B Testing"],
   },
   {
@@ -164,6 +168,7 @@ export const experienceData: Experience[] = [
       "Landing & sales page redesign → significant revenue increase",
     ],
     caseStudySlug: null,
+    logo: null,
     tags: ["B2C", "Personalization", "Global"],
   },
   {
@@ -186,6 +191,7 @@ export const experienceData: Experience[] = [
       "Brand consistency reinforcement and UX convention validation",
     ],
     caseStudySlug: null,
+    logo: null,
     tags: ["EdTech", "B2C", "A/B Testing"],
   },
   {
@@ -202,6 +208,7 @@ export const experienceData: Experience[] = [
     highlights: [],
     highlightsEn: [],
     caseStudySlug: null,
+    logo: null,
     tags: ["Freelance", "Branding", "UI Design"],
   },
   {
@@ -218,6 +225,7 @@ export const experienceData: Experience[] = [
     highlights: [],
     highlightsEn: [],
     caseStudySlug: null,
+    logo: null,
     tags: ["New York", "Brand", "Visual Design"],
   },
 ];

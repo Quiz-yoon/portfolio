@@ -7,7 +7,7 @@ import { aboutData, experienceData } from "@/lib/data";
 
 export default function AboutPage() {
   const { locale } = useLocale();
-  const [tooltip, setTooltip] = useState<{ x: number; y: number; visible: boolean; company: string }>({ x: 0, y: 0, visible: false, company: "" });
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; visible: boolean; logo: string | null }>({ x: 0, y: 0, visible: false, logo: null });
 
   const positioning =
     locale === "ko" ? aboutData.positioning : aboutData.positioningEn;
@@ -73,25 +73,25 @@ export default function AboutPage() {
                 key={exp.id}
                 className={`border-b border-[#F2F2F7] py-8 last:border-b-0${exp.caseStudySlug ? " cursor-none" : ""}`}
                 onClick={exp.caseStudySlug ? () => window.location.href = `/work/${exp.caseStudySlug}` : undefined}
-                onMouseMove={exp.caseStudySlug ? (e) => setTooltip({ x: e.clientX, y: e.clientY, visible: true, company: exp.company }) : undefined}
+                onMouseMove={exp.caseStudySlug ? (e) => setTooltip({ x: e.clientX, y: e.clientY, visible: true, logo: exp.logo }) : undefined}
                 onMouseLeave={exp.caseStudySlug ? () => setTooltip((t) => ({ ...t, visible: false })) : undefined}
               >
                 {/* Header: Company + Role + Period */}
                 <div>
-                  <p className="text-[16px] font-medium text-[#1C1C1E]">
+                  <p className="text-[18px] font-semibold text-[#1C1C1E]">
                     {exp.company}
                   </p>
-                  <p className="mt-1 text-[13px] text-[#8E8E93]">
+                  <p className="mt-1 text-[14.5px] text-[#636366]">
                     {exp.period} · {exp.location}
                   </p>
                 </div>
 
                 {/* Description + Highlights + Tags */}
                 <div className="mt-4">
-                  <p className="text-[14px] font-medium text-[#1C1C1E]">
+                  <p className="text-[16px] font-medium text-[#1C1C1E]">
                     {exp.role}
                   </p>
-                  <p className="mt-1.5 text-[13px] leading-[1.75] text-[#8E8E93]">
+                  <p className="mt-1.5 text-[14.5px] leading-[1.75] text-[#636366]">
                     {locale === "ko" ? exp.description : exp.descriptionEn}
                   </p>
                   {(locale === "ko" ? exp.highlights : exp.highlightsEn).length > 0 && (
@@ -99,9 +99,9 @@ export default function AboutPage() {
                       {(locale === "ko" ? exp.highlights : exp.highlightsEn).map((h, i) => (
                         <li
                           key={i}
-                          className="text-[13px] leading-[1.4] text-[#8E8E93]"
+                          className="text-[14.5px] leading-[1.4] text-[#636366]"
                         >
-                          <span className="mr-1.5 text-[#8E8E93]">•</span>
+                          <span className="mr-1.5 text-[#636366]">•</span>
                           {h}
                         </li>
                       ))}
@@ -123,8 +123,22 @@ export default function AboutPage() {
           className="pointer-events-none fixed z-50"
           style={{ left: tooltip.x + 16, top: tooltip.y + 16 }}
         >
-          <div className="flex items-center gap-1 rounded-full bg-[#1C1C1E] px-5 py-2.5 text-[14px] font-medium text-white">
-            {tooltip.company} · {locale === "ko" ? "프로젝트 보러가기" : "View project"}
+          <div
+            className="flex items-center gap-2 rounded-full py-3 pl-3 pr-5 text-[14px] font-semibold"
+            style={{
+              background: "rgba(0,0,0,0.03)",
+              backdropFilter: "blur(5px)",
+              WebkitBackdropFilter: "blur(5px)",
+              border: "none",
+              boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.7), inset 0 1px 0 rgba(255,255,255,0.3), inset 0 -1px 0 rgba(0,0,0,0.04)",
+              color: "rgba(0,0,0,0.75)",
+            }}
+          >
+            {tooltip.logo && (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img src={tooltip.logo} alt="" className="h-5 w-5 rounded-full object-cover" />
+            )}
+            {locale === "ko" ? "프로젝트 보러가기" : "View project"}
             <ArrowUpRight size={14} />
           </div>
         </div>
