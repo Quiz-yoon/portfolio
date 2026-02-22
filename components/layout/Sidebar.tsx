@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { sidebarData } from "@/lib/data";
 import { useLocale } from "@/lib/locale-context";
 
@@ -24,6 +24,19 @@ export default function Sidebar() {
 
   const [active, setActive] = useState("about");
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
 
   // Auto-expand parent menu on work pages
   useEffect(() => {
@@ -79,8 +92,37 @@ export default function Sidebar() {
   const linkDefault = "text-[#48484A] hover:text-[#1C1C1E]";
   const linkActive = "bg-white text-[#1C1C1E] shadow-[0_1px_3px_rgba(0,0,0,0.06)]";
 
+  const closeMobile = () => setMobileOpen(false);
+
   return (
-    <aside className="fixed left-0 top-0 z-10 flex h-screen w-[250px] flex-col bg-[#F7F7FA] p-4 text-[#8E8E93]">
+    <>
+      {/* Hamburger button — mobile only */}
+      <button
+        onClick={() => setMobileOpen(true)}
+        className="fixed left-4 top-4 z-20 flex h-10 w-10 items-center justify-center rounded-lg bg-[#F7F7FA] md:hidden"
+        aria-label="Open menu"
+      >
+        <Menu size={20} className="text-[#1C1C1E]" />
+      </button>
+
+      {/* Overlay — mobile only */}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/20 backdrop-blur-[2px] md:hidden"
+          onClick={closeMobile}
+        />
+      )}
+
+      <aside className={`fixed left-0 top-0 z-40 flex h-screen w-[250px] flex-col bg-[#F7F7FA] p-4 text-[#8E8E93] transition-transform duration-300 ease-in-out ${mobileOpen ? "translate-x-0" : "-translate-x-full"} md:z-10 md:translate-x-0`}>
+      {/* Close button — mobile only */}
+      <button
+        onClick={closeMobile}
+        className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-md hover:bg-[#EBEBF0] md:hidden"
+        aria-label="Close menu"
+      >
+        <X size={18} className="text-[#8E8E93]" />
+      </button>
+
       {/* Name */}
       <div className="px-3">
         <span className="text-[16px] font-semibold text-[#1C1C1E]">
@@ -94,6 +136,7 @@ export default function Sidebar() {
         onClick={() => {
           setActive("about");
           setExpanded({});
+          closeMobile();
         }}
         className={`mt-5 ${linkBase} ${active === "about" || pathname === "/about" ? linkActive : linkDefault}`}
       >
@@ -118,6 +161,7 @@ export default function Sidebar() {
                     if (!wasExpanded && project.children?.[0]) {
                       setActive(project.children[0].id);
                       router.push(`/work/${project.children[0].id}`);
+                      closeMobile();
                     }
                   }}
                   className={`${linkBase} w-full justify-between ${project.children?.some((c) => c.id === active || c.id === currentSlug) ? linkActive : linkDefault}`}
@@ -136,7 +180,7 @@ export default function Sidebar() {
                     <Link
                       key={child.id}
                       href={`/work/${child.id}`}
-                      onClick={() => setActive(child.id)}
+                      onClick={() => { setActive(child.id); closeMobile(); }}
                       className={`flex items-center border-l-2 py-2 pl-4 pr-3 text-[13.5px] transition-colors duration-150 ${active === child.id || currentSlug === child.id ? "border-[#1C1C1E] text-[#1C1C1E]" : "border-[#D1D1D6] text-[#AEAEB2] hover:text-[#1C1C1E]"}`}
                     >
                       {child.name}
@@ -151,6 +195,7 @@ export default function Sidebar() {
                 onClick={() => {
                   setActive(project.id);
                   setExpanded({});
+                  closeMobile();
                 }}
                 className={`${linkBase} justify-between ${active === project.id || currentSlug === project.id ? linkActive : linkDefault}`}
               >
@@ -175,6 +220,7 @@ export default function Sidebar() {
               onClick={() => {
                 setActive(item.id);
                 setExpanded({});
+                closeMobile();
               }}
               className={`${linkBase} ${active === item.id || pathname === `/${item.id}` ? linkActive : linkDefault}`}
             >
@@ -231,5 +277,6 @@ export default function Sidebar() {
         </div>
       </div>
     </aside>
+    </>
   );
 }

@@ -18,15 +18,15 @@ export default function AboutPage() {
       : aboutData.currentlyExploringEn;
 
   return (
-    <main className="mx-auto w-full self-stretch max-w-[1400px] px-[80px] pb-20">
-      <div className="mx-auto max-w-[800px] pt-[80px]">
+    <main className="mx-auto w-full self-stretch max-w-[1400px] px-5 pb-20 md:px-[80px]">
+      <div className="mx-auto max-w-[800px] pt-16 md:pt-[80px]">
         {/* Intro */}
         <section>
           <div>
             <p className="text-[13.5px] text-[#8E8E93]">
               {aboutData.role}
             </p>
-            <h1 className="mt-4 mb-12 text-[48px] font-medium leading-[1.3] text-[#1C1C1E]">
+            <h1 className="mt-4 mb-12 text-[32px] font-medium leading-[1.3] text-[#1C1C1E] md:text-[48px]">
               Quiz Yoon
             </h1>
             <p className="text-[16px] leading-[1.7] text-[#48484A]">
@@ -106,7 +106,7 @@ export default function AboutPage() {
                 </div>
 
                 {/* Description + Highlights + Tags */}
-                <div className="mt-3 pl-[48px]">
+                <div className="mt-3 pl-0 md:pl-[48px]">
                   <p className="text-[13.5px] leading-[1.75] text-[#48484A]">
                     {locale === "ko" ? exp.description : exp.descriptionEn}
                   </p>
@@ -151,7 +151,7 @@ export default function AboutPage() {
 
         {/* Education + Languages */}
         <section className="mt-14">
-          <div className="grid grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div>
               <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
                 Education

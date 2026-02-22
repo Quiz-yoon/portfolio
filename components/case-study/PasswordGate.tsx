@@ -43,7 +43,7 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
 
   return (
     <div className="mx-auto max-w-[800px] pb-[80px]">
-      <div className="rounded-xl border border-[#E5E5EA] bg-[#F7F7FA] px-8 py-10">
+      <div className="rounded-xl border border-[#E5E5EA] bg-[#F7F7FA] px-5 py-8 md:px-8 md:py-10">
         <p className="text-[15px] font-medium text-[#1C1C1E]">
           {isKo ? "보호된 콘텐츠입니다" : "This content is protected"}
         </p>
@@ -53,7 +53,7 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
             : "The detailed case study is under NDA. Please enter the password to view."}
         </p>
 
-        <form onSubmit={handleSubmit} className="mt-6 flex gap-3">
+        <form onSubmit={handleSubmit} className="mt-6 flex flex-col gap-3 md:flex-row">
           <input
             type="password"
             value={password}
@@ -64,7 +64,7 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
           <button
             type="submit"
             disabled={loading || !password}
-            className="h-[44px] rounded-lg bg-[#1C1C1E] px-6 text-[14px] font-medium text-white transition-opacity hover:opacity-80 disabled:opacity-40"
+            className="h-[44px] w-full rounded-lg bg-[#1C1C1E] px-6 text-[14px] font-medium text-white transition-opacity hover:opacity-80 disabled:opacity-40 md:w-auto"
           >
             {loading ? (isKo ? "확인 중..." : "Verifying...") : (isKo ? "확인" : "Unlock")}
           </button>

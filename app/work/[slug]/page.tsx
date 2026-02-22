@@ -17,7 +17,7 @@ export default function CaseStudyPage({ params }: PageProps) {
   if (!study) notFound();
 
   return (
-    <main className="mx-auto w-full max-w-[1400px] px-[80px] pb-20">
+    <main className="mx-auto w-full max-w-[1400px] px-5 pb-20 md:px-[80px]">
       <CaseStudyContent study={study} />
     </main>
   );

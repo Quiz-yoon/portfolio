@@ -12,7 +12,7 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Portfolio - Quiz Yoon",
   description: "Personal portfolio website",
 };
 
@@ -37,7 +37,7 @@ export default function RootLayout({
       >
         <LocaleProvider>
           <Sidebar />
-          <div className="relative ml-[250px] flex min-h-screen flex-col items-start gap-12 overflow-hidden">
+          <div className="relative ml-0 flex min-h-screen flex-col items-start gap-12 overflow-hidden md:ml-[250px]">
             {children}
           </div>
         </LocaleProvider>

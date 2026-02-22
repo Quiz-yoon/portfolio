@@ -18,7 +18,7 @@ export default function ProjectNavigation({
 
   return (
     <nav className="mx-auto max-w-[800px] border-t border-[#D1D1D6] pt-12">
-      <div className="flex w-full justify-between">
+      <div className="flex w-full flex-col gap-8 md:flex-row md:justify-between">
         <div>
           {prevProject && (
             <Link href={`/work/${prevProject.slug}`} className="group">
@@ -29,7 +29,7 @@ export default function ProjectNavigation({
             </Link>
           )}
         </div>
-        <div className="text-right">
+        <div className="text-left md:text-right">
           {nextProject && (
             <Link href={`/work/${nextProject.slug}`} className="group">
               <p className="text-[16px] font-medium text-[#1C1C1E]">Next Project →</p>

@@ -43,7 +43,7 @@ const startClasses: Record<number, string> = {
 
 export function Grid({ children, className = "" }: GridProps) {
   return (
-    <div className={`grid w-full grid-cols-12 gap-5 ${className}`}>
+    <div className={`grid w-full grid-cols-1 gap-5 md:grid-cols-12 ${className}`}>
       {children}
     </div>
   );

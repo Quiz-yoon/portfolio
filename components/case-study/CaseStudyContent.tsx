@@ -17,7 +17,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
     <>
       {/* Cover Image */}
       {study.cover && (
-        <section className="mb-[80px]">
+        <section className="mb-12 md:mb-[80px]">
           <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9" }}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
@@ -30,12 +30,12 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
       )}
 
       {/* Hero */}
-      <section className="mb-[100px]">
+      <section className="mb-16 md:mb-[100px]">
         <div className="mx-auto max-w-[800px]">
           <p className="text-[13.5px] text-[#8E8E93]">
             {study.title}
           </p>
-          <h1 className="mt-4 mb-12 text-[48px] font-medium leading-[1.3] text-[#1C1C1E]">
+          <h1 className="mt-4 mb-12 text-[28px] font-medium leading-[1.3] text-[#1C1C1E] md:text-[48px]">
             {isKo && study.impactKo ? study.impactKo : study.impact}
           </h1>
           {study.sections[0] && (
@@ -49,7 +49,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
 
         {/* Project Overview */}
         <div className="mx-auto max-w-[800px] pt-16">
-          <div className="grid grid-cols-2 gap-x-16 gap-y-8">
+          <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2">
             <div>
               <p className="text-[16px] font-medium text-[#1C1C1E]">Year</p>
               <p className="mt-1 text-[16px] text-[#8E8E93]">{study.period}</p>
@@ -73,13 +73,13 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
       <PasswordGate onUnlock={setGateUnlocked}>
       {/* Sections */}
       {study.sections.map((section) => (
-          <section key={section.id} className="mb-[100px]">
+          <section key={section.id} className="mb-16 md:mb-[100px]">
             {/* Image */}
             {section.images && section.images.length > 0 ? (
               section.images.map((img) => (
                 <figure
                   key={img.src}
-                  className={img.fullWidth ? "-mx-8 mb-[80px]" : "mb-[80px]"}
+                  className={img.fullWidth ? "-mx-8 mb-12 md:mb-[80px]" : "mb-12 md:mb-[80px]"}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={img.src} alt={img.caption || ""} className="w-full" />
@@ -91,7 +91,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                 </figure>
               ))
             ) : (
-              <div className="mb-[80px] w-full overflow-hidden" style={{ aspectRatio: "16 / 9" }}>
+              <div className="mb-12 w-full overflow-hidden md:mb-[80px]" style={{ aspectRatio: "16 / 9" }}>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src="/images/JPEG 이미지.jpeg"
@@ -106,7 +106,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               <p className="text-[14px] text-[#8E8E93]">
                 {section.labelEn || section.label}
               </p>
-              <h2 className="mt-3 text-[28px] font-semibold leading-[1.5] text-[#1C1C1E]">
+              <h2 className="mt-3 text-[22px] font-semibold leading-[1.5] text-[#1C1C1E] md:text-[28px]">
                 {isKo ? section.headline : (section.headlineEn || section.headline)}
               </h2>
               <p className="mt-8 text-[16px] leading-[1.7] text-[#48484A]">
@@ -122,7 +122,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
       </PasswordGate>
 
       {/* Prev / Next Navigation */}
-      <div className={gateUnlocked ? "mt-[150px]" : ""}>
+      <div className={gateUnlocked ? "mt-20 md:mt-[150px]" : ""}>
         <ProjectNavigation
           prevProject={study.prevProject}
           nextProject={study.nextProject}
