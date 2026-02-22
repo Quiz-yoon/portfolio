@@ -1,10 +1,13 @@
 "use client";
 
+import { useState } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/lib/locale-context";
 import { aboutData, experienceData } from "@/lib/data";
 
 export default function AboutPage() {
   const { locale } = useLocale();
+  const [tooltip, setTooltip] = useState<{ x: number; y: number; visible: boolean; company: string }>({ x: 0, y: 0, visible: false, company: "" });
 
   const positioning =
     locale === "ko" ? aboutData.positioning : aboutData.positioningEn;
@@ -68,7 +71,10 @@ export default function AboutPage() {
             {experienceData.map((exp) => (
               <div
                 key={exp.id}
-                className="border-b border-[#F2F2F7] py-8 last:border-b-0"
+                className={`border-b border-[#F2F2F7] py-8 last:border-b-0${exp.caseStudySlug ? " cursor-none" : ""}`}
+                onClick={exp.caseStudySlug ? () => window.location.href = `/work/${exp.caseStudySlug}` : undefined}
+                onMouseMove={exp.caseStudySlug ? (e) => setTooltip({ x: e.clientX, y: e.clientY, visible: true, company: exp.company }) : undefined}
+                onMouseLeave={exp.caseStudySlug ? () => setTooltip((t) => ({ ...t, visible: false })) : undefined}
               >
                 {/* Header: Company + Role + Period */}
                 <div>
@@ -101,14 +107,6 @@ export default function AboutPage() {
                       ))}
                     </ul>
                   )}
-                  {exp.caseStudySlug && (
-                    <a
-                      href={`/work/${exp.caseStudySlug}`}
-                      className="mt-3 inline-block text-[13px] font-medium text-[#007AFF] hover:underline"
-                    >
-                      {locale === "ko" ? "케이스 스터디 보기 ↗" : "View case study ↗"}
-                    </a>
-                  )}
                 </div>
               </div>
             ))}
@@ -118,6 +116,19 @@ export default function AboutPage() {
 
 
       </div>
+
+      {/* Cursor tooltip */}
+      {tooltip.visible && (
+        <div
+          className="pointer-events-none fixed z-50"
+          style={{ left: tooltip.x + 16, top: tooltip.y + 16 }}
+        >
+          <div className="flex items-center gap-1 rounded-full bg-[#1C1C1E] px-5 py-2.5 text-[14px] font-medium text-white">
+            {tooltip.company} · {locale === "ko" ? "프로젝트 보러가기" : "View project"}
+            <ArrowUpRight size={14} />
+          </div>
+        </div>
+      )}
     </main>
   );
 }

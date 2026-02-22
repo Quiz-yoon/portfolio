@@ -93,7 +93,7 @@ export const experienceData: Experience[] = [
       "New user coupon campaign → improved CVR",
       "Design system (RDSG) → UI consistency, improved team productivity",
     ],
-    caseStudySlug: null,
+    caseStudySlug: "wishlist-optimization",
     tags: ["E-commerce", "Design System", "Localization", "B2C"],
   },
   {
@@ -119,7 +119,7 @@ export const experienceData: Experience[] = [
       "Plan feature → greatly improved workout retention",
       "Design system → UI/UX consistency maintained through scaling",
     ],
-    caseStudySlug: null,
+    caseStudySlug: "bunker-kids",
     tags: ["Zero to One", "B2C", "Design System", "iOS/Android"],
   },
   {
@@ -141,7 +141,7 @@ export const experienceData: Experience[] = [
       "Funnel optimization → improved purchase conversion and retention",
       "New user onboarding improvement → reduced early-stage drop-off",
     ],
-    caseStudySlug: null,
+    caseStudySlug: "styleshare",
     tags: ["B2C", "E-commerce", "A/B Testing"],
   },
   {
