@@ -48,8 +48,8 @@ export default function TableOfContents({
   };
 
   return (
-    <nav className="relative w-[200px] flex-shrink-0">
-      <div className="fixed top-[40px] w-[200px]">
+    <nav className="w-[200px] flex-shrink-0 self-stretch">
+      <div className="sticky top-[40px]">
         <p className="text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Contents
         </p>

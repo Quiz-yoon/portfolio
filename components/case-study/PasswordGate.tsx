@@ -42,7 +42,7 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
   }
 
   return (
-    <div id="password-gate" className="mx-auto max-w-[800px] pb-[80px]">
+    <div id="password-gate" className="mx-auto max-w-[760px] pb-[80px]">
       <div className="rounded-xl border border-[#E5E5EA] bg-[#F7F7FA] px-5 py-8 md:px-8 md:py-10">
         <p className="text-[15px] font-medium text-[#1C1C1E]">
           {isKo ? "보호된 콘텐츠입니다" : "This content is protected"}

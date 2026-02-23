@@ -15,18 +15,18 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
   const [gateUnlocked, setGateUnlocked] = useState(false);
 
   return (
-    <div className="flex items-start gap-12">
+    <div className="mx-auto flex items-start gap-8" style={{ maxWidth: "992px" }}>
       {/* Main content */}
-      <div className="min-w-0 flex-1">
+      <div className="min-w-0 flex-1 max-w-[760px]">
         {/* Cover Image */}
         {study.cover && (
           <section className="mb-12 pt-10 md:mb-[80px]">
-            <div className="relative w-full overflow-hidden" style={{ aspectRatio: "16 / 9" }}>
+            <div className="overflow-hidden rounded-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={study.cover}
                 alt={study.title}
-                className="absolute inset-0 h-full w-full object-cover"
+                className="w-full"
               />
             </div>
           </section>
@@ -34,7 +34,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
 
         {/* Hero */}
         <section className="mb-16 md:mb-[100px]">
-          <div className="mx-auto max-w-[800px]">
+          <div>
             <p className="text-[13.5px] text-[#8E8E93]">
               {study.title}
             </p>
@@ -51,7 +51,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
           </div>
 
           {/* Project Overview */}
-          <div className="mx-auto max-w-[800px] pt-16">
+          <div className="pt-16">
             <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2">
               <div>
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Year</p>
@@ -77,7 +77,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
         {/* Sections */}
         {study.sections.map((section) => (
             <section key={section.id} id={section.id} className="mb-16 md:mb-[100px]">
-              <div className="mx-auto max-w-[800px]">
+              <div>
               {/* Image */}
               {section.images && section.images.length > 0 ? (
                 section.images.map((img) => (
@@ -86,7 +86,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                     className="mb-12 md:mb-[80px]"
                   >
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={img.src} alt={img.caption || ""} className="w-full" />
+                    <img src={img.src} alt={img.caption || ""} className="w-full rounded-2xl" />
                     {img.caption && (
                       <figcaption className="mt-2 text-center text-[11.5px] text-[#8E8E93]">
                         {img.caption}
@@ -95,10 +95,10 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                   </figure>
                 ))
               ) : (
-                <div className="mb-12 w-full overflow-hidden md:mb-[80px]" style={{ aspectRatio: "16 / 9" }}>
+                <div className="mb-12 w-full overflow-hidden rounded-2xl md:mb-[80px]" style={{ aspectRatio: "16 / 9" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
-                    src="/images/JPEG 이미지.jpeg"
+                    src="/images/Frame 2085666081.png"
                     alt=""
                     className="h-full w-full object-cover"
                   />
