@@ -5,8 +5,10 @@ import type { CaseStudySection } from "@/lib/data";
 
 export default function TableOfContents({
   sections,
+  mobile = false,
 }: {
   sections: CaseStudySection[];
+  mobile?: boolean;
 }) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
 
@@ -47,8 +49,34 @@ export default function TableOfContents({
     }
   };
 
+  if (mobile) {
+    return (
+      <nav className="md:hidden">
+        <p className="text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
+          Contents
+        </p>
+        <ul className="mt-4 flex flex-col gap-0">
+          {sections.map((section) => (
+            <li key={section.id}>
+              <button
+                onClick={() => handleClick(section.id)}
+                className={`w-full border-l-2 py-2.5 pl-4 pr-2 text-left text-[13.5px] transition-colors duration-150 ${
+                  activeId === section.id
+                    ? "border-[#1C1C1E] font-semibold text-[#1C1C1E]"
+                    : "border-[#E5E5EA] text-[#8E8E93] hover:text-[#1C1C1E]"
+                }`}
+              >
+                {section.labelEn || section.label}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    );
+  }
+
   return (
-    <nav className="w-[200px] flex-shrink-0 self-stretch">
+    <nav className="hidden md:block w-[200px] flex-shrink-0 self-stretch">
       <div className="sticky top-[40px]">
         <p className="text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Contents

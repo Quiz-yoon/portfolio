@@ -73,6 +73,11 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
           </div>
         </section>
 
+        {/* Mobile TOC — below hero */}
+        <div className="mb-16">
+          <TableOfContents sections={study.sections} mobile />
+        </div>
+
         <PasswordGate onUnlock={setGateUnlocked}>
         {/* Sections */}
         {study.sections.map((section) => (
