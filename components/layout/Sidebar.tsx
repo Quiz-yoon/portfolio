@@ -12,7 +12,6 @@ const allSectionIds = [
   ...sidebarData.projects.flatMap((p) =>
     p.children ? p.children.map((c) => c.id) : [p.id],
   ),
-  ...sidebarData.designEngineering.map((d) => d.id),
 ];
 
 export default function Sidebar() {
@@ -226,28 +225,7 @@ export default function Sidebar() {
 
       </div>
 
-      {/* Design Engineering */}
-      <div className="mt-6">
-        <p className="px-3 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
-          Design Engineering
-        </p>
-        <nav className="mt-2 flex flex-col gap-0.5">
-          {sidebarData.designEngineering.map((item) => (
-            <Link
-              key={item.id}
-              href={`/${item.id}`}
-              onClick={() => {
-                setActive(item.id);
-                setExpanded({});
-                closeMobile();
-              }}
-              className={`${linkBase} ${active === item.id ? linkActive : linkDefault}`}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-      </div>
+      {/* Design Engineering — hidden for now */}
 
       {/* Contact */}
       <div className="mt-6">

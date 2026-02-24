@@ -15,12 +15,12 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
   const [gateUnlocked, setGateUnlocked] = useState(false);
 
   return (
-    <div className="mx-auto flex items-start gap-8" style={{ maxWidth: "992px" }}>
+    <div className="mx-auto flex items-start gap-[48px]" style={{ maxWidth: "992px" }}>
       {/* Main content */}
       <div className="min-w-0 flex-1 max-w-[760px]">
         {/* Cover Image */}
         {study.cover && (
-          <section className="mb-12 pt-10 md:mb-[80px]">
+          <section className="mb-12 pt-16 md:pt-[80px] md:mb-[80px]">
             <div className="overflow-hidden rounded-2xl">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -33,7 +33,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
         )}
 
         {/* Hero */}
-        <section className="mb-16 md:mb-[100px]">
+        <section className={`mb-16 md:mb-[100px] ${!study.cover ? "pt-16 md:pt-[80px]" : ""}`}>
           <div>
             <p className="text-[13.5px] text-[#8E8E93]">
               {study.title}
@@ -105,7 +105,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                   <img
                     src="/images/Frame 2085666081.png"
                     alt=""
-                    className="h-full w-full object-cover"
+                    className="h-full w-full rounded-2xl object-cover"
                   />
                 </div>
               )}

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/lib/locale-context";
 import { aboutData, experienceData } from "@/lib/data";
+import TableOfContents from "@/components/case-study/TableOfContents";
 
 export default function AboutPage() {
   const { locale } = useLocale();
@@ -20,11 +21,19 @@ export default function AboutPage() {
       ? aboutData.currentlyExploring
       : aboutData.currentlyExploringEn;
 
+  const aboutSections = [
+    { id: "intro", label: "Intro" },
+    { id: "philosophy", label: "Philosophy" },
+    { id: "interests", label: "Interests" },
+    { id: "experience", label: "Experience" },
+  ];
+
   return (
-    <main className="mx-auto w-full self-stretch max-w-[1400px] px-5 pb-20 md:px-[80px]">
-      <div className="mx-auto max-w-[800px] pt-16 md:pt-[80px]">
+    <main className="mx-auto w-full max-w-[1400px] px-5 pb-20 md:px-[80px]">
+      <div className="mx-auto flex items-start gap-[48px]" style={{ maxWidth: "992px" }}>
+      <div className="min-w-0 flex-1 max-w-[760px] pt-16 md:pt-[80px]">
         {/* Intro */}
-        <section>
+        <section id="intro" className="scroll-mt-[80px]">
           <div>
             <p className="text-[13.5px] text-[#8E8E93]">
               {aboutData.role}
@@ -39,7 +48,7 @@ export default function AboutPage() {
         </section>
 
         {/* Philosophy */}
-        <section className="mt-14">
+        <section id="philosophy" className="mt-14 scroll-mt-[80px]">
           <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
             Philosophy
           </p>
@@ -49,7 +58,7 @@ export default function AboutPage() {
         </section>
 
         {/* Interests */}
-        <section className="mt-14">
+        <section id="interests" className="mt-14 scroll-mt-[80px]">
           <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
             Interests
           </p>
@@ -66,7 +75,7 @@ export default function AboutPage() {
         </section>
 
         {/* Experience */}
-        <section className="mt-14">
+        <section id="experience" className="mt-14 scroll-mt-[80px]">
           <div className="flex flex-col">
             {experienceData.map((exp) => (
               <div
@@ -115,6 +124,14 @@ export default function AboutPage() {
 
 
 
+        {/* Mobile TOC */}
+        <div className="mb-16 md:hidden">
+          <TableOfContents sections={aboutSections} mobile />
+        </div>
+      </div>
+
+      {/* Right TOC */}
+      <TableOfContents sections={aboutSections} />
       </div>
 
       {/* Cursor tooltip */}

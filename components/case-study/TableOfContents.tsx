@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { CaseStudySection } from "@/lib/data";
+type TocSection = { id: string; label: string; labelEn?: string };
 
 export default function TableOfContents({
   sections,
   mobile = false,
 }: {
-  sections: CaseStudySection[];
+  sections: TocSection[];
   mobile?: boolean;
 }) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
@@ -25,7 +25,7 @@ export default function TableOfContents({
           setActiveId(visible[0].target.id);
         }
       },
-      { rootMargin: "-20% 0px -60% 0px" },
+      { rootMargin: "-10% 0px -80% 0px" },
     );
 
     ids.forEach((id) => {
@@ -37,6 +37,7 @@ export default function TableOfContents({
   }, [sections]);
 
   const handleClick = (id: string) => {
+    setActiveId(id);
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -77,7 +78,7 @@ export default function TableOfContents({
 
   return (
     <nav className="hidden md:block w-[200px] flex-shrink-0 self-stretch">
-      <div className="sticky top-[40px]">
+      <div className="sticky top-[80px]">
         <p className="text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Contents
         </p>
