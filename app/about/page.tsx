@@ -93,10 +93,10 @@ export default function AboutPage() {
               >
                 {/* Header: Company + Role + Period */}
                 <div>
-                  <p className="text-[18px] font-semibold text-[#1C1C1E]">
+                  <p className="text-[18px] font-semibold text-[#1C1C1E]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
                     {exp.company}
                   </p>
-                  <p className="mt-1 text-[14.5px] text-[#636366]">
+                  <p className="mt-1 text-[14.5px] text-[#636366]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
                     {exp.period} · {exp.location}
                   </p>
                 </div>
