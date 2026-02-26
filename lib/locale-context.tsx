@@ -28,6 +28,11 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     if (mounted) {
       localStorage.setItem(STORAGE_KEY, locale);
+      if (locale === "ko") {
+        document.body.style.fontFamily = "'Pretendard Variable', Pretendard, var(--font-poppins), sans-serif";
+      } else {
+        document.body.style.fontFamily = "var(--font-poppins), 'Pretendard Variable', Pretendard, sans-serif";
+      }
     }
   }, [locale, mounted]);
 
