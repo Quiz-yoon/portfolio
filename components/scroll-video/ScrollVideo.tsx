@@ -50,7 +50,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
       const video = videoRef.current;
       if (!video || !isReady) return;
 
-      const endTime = (video.duration / 10) + 0.3;
+      const endTime = video.duration;
       const p = Math.min(Math.max(progressRef.current, 0), 1);
       const newTime = Math.round((endTime - p * endTime) * 100) / 100;
 
@@ -132,9 +132,9 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
 
   return (
     <div ref={containerRef} className="sticky top-0 z-20 w-full overflow-hidden rounded-2xl bg-[#fafafa] aspect-square md:aspect-video">
-      <div className="flex h-full items-center justify-center pt-8 md:pt-36">
+      <div className="flex h-full items-center justify-center pt-16 md:pt-28">
         <div
-          className="relative w-[38%] max-w-[300px] min-w-[160px] overflow-hidden rounded-2xl"
+          className="relative w-[70%] max-w-[400px] overflow-hidden rounded-2xl md:w-[40%]"
           style={{ opacity: isReady ? 1 : 0, transition: "opacity 0.3s ease" }}
         >
           <video
@@ -144,7 +144,6 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
             playsInline
             preload="auto"
             className="w-full"
-            style={{ marginTop: -16 }}
           />
           <div className="pointer-events-none absolute inset-0 rounded-2xl" style={{ background: "rgba(0,0,0,0.02)" }} />
         </div>
