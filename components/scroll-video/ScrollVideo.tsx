@@ -114,7 +114,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
       if (!containerRef.current) return;
       const deltaY = touchStartY.current - e.touches[0].clientY;
       touchStartY.current = e.touches[0].clientY;
-      if (isReady && handleDelta(deltaY, 200)) {
+      if (isReady && handleDelta(deltaY, 80)) {
         e.preventDefault();
       } else if (!isReady && lockedRef.current) {
         e.preventDefault();
