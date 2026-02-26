@@ -20,18 +20,18 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     const video = videoRef.current;
     if (!video) return;
 
-    const markReady = () => setIsReady(true);
+    let ready = false;
+    const markReady = () => {
+      if (ready) return;
+      ready = true;
+      setIsReady(true);
+    };
     video.addEventListener("loadedmetadata", markReady);
     video.addEventListener("loadeddata", markReady);
     if (video.readyState >= 1) markReady();
 
     // Force load on mobile browsers
     video.load();
-    // Brief play/pause to trigger frame decoding on mobile
-    video.play().then(() => {
-      video.pause();
-      video.currentTime = 0;
-    }).catch(() => {});
 
     // Fallback: show video after 2s even if metadata hasn't loaded
     const timeout = setTimeout(markReady, 2000);
@@ -92,7 +92,6 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
   useEffect(() => {
     const onWheel = (e: WheelEvent) => {
       if (!containerRef.current) return;
-      if (!lockedRef.current) return;
       if (isReady && handleDelta(e.deltaY)) {
         e.preventDefault();
       } else if (!isReady && lockedRef.current) {
@@ -121,12 +120,12 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
       }
     };
 
-    window.addEventListener("touchstart", onTouchStart, { passive: true });
-    window.addEventListener("touchmove", onTouchMove, { passive: false });
+    document.addEventListener("touchstart", onTouchStart, { passive: true });
+    document.addEventListener("touchmove", onTouchMove, { passive: false });
 
     return () => {
-      window.removeEventListener("touchstart", onTouchStart);
-      window.removeEventListener("touchmove", onTouchMove);
+      document.removeEventListener("touchstart", onTouchStart);
+      document.removeEventListener("touchmove", onTouchMove);
     };
   }, [isReady, handleDelta]);
 
@@ -135,7 +134,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
   }, [isReady, scheduleUpdate]);
 
   return (
-    <div ref={containerRef} className="sticky top-0 z-20 w-full overflow-hidden rounded-2xl bg-[#fafafa]" style={{ aspectRatio: "16 / 9" }}>
+    <div ref={containerRef} className="sticky top-0 z-20 w-full overflow-hidden rounded-2xl bg-[#fafafa] aspect-square md:aspect-video">
       <div className="flex h-full items-center justify-center pt-8 md:pt-36">
         <div
           className="relative w-[38%] max-w-[300px] min-w-[160px] overflow-hidden rounded-2xl"
