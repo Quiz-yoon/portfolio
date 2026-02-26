@@ -40,7 +40,8 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
       const container = containerRef.current;
       if (!container) return;
 
-      if (!lockedRef.current && window.scrollY <= 0 && e.deltaY < 0 && progressRef.current > 0) {
+      // Only re-lock when user is manually scrolling up at the very top
+      if (!lockedRef.current && window.scrollY === 0 && e.deltaY < 0 && progressRef.current > 0) {
         lockedRef.current = true;
       }
 
