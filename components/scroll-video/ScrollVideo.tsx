@@ -20,11 +20,19 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     const video = videoRef.current;
     if (!video) return;
 
-    const handleLoadedMetadata = () => setIsReady(true);
-    video.addEventListener("loadedmetadata", handleLoadedMetadata);
-    if (video.readyState >= 1) setIsReady(true);
+    const markReady = () => setIsReady(true);
+    video.addEventListener("loadedmetadata", markReady);
+    video.addEventListener("loadeddata", markReady);
+    if (video.readyState >= 1) markReady();
 
-    return () => video.removeEventListener("loadedmetadata", handleLoadedMetadata);
+    // Fallback: show video after 2s even if metadata hasn't loaded
+    const timeout = setTimeout(markReady, 2000);
+
+    return () => {
+      video.removeEventListener("loadedmetadata", markReady);
+      video.removeEventListener("loadeddata", markReady);
+      clearTimeout(timeout);
+    };
   }, []);
 
   const scheduleUpdate = useCallback(() => {
@@ -74,11 +82,12 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
 
   // Wheel events (desktop)
   useEffect(() => {
-    if (!isReady) return;
-
     const onWheel = (e: WheelEvent) => {
       if (!containerRef.current) return;
-      if (handleDelta(e.deltaY)) {
+      if (!lockedRef.current) return;
+      if (isReady && handleDelta(e.deltaY)) {
+        e.preventDefault();
+      } else if (!isReady && lockedRef.current) {
         e.preventDefault();
       }
     };
@@ -89,8 +98,6 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
 
   // Touch events (mobile)
   useEffect(() => {
-    if (!isReady) return;
-
     const onTouchStart = (e: TouchEvent) => {
       touchStartY.current = e.touches[0].clientY;
     };
@@ -99,7 +106,9 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
       if (!containerRef.current) return;
       const deltaY = touchStartY.current - e.touches[0].clientY;
       touchStartY.current = e.touches[0].clientY;
-      if (handleDelta(deltaY)) {
+      if (isReady && handleDelta(deltaY)) {
+        e.preventDefault();
+      } else if (!isReady && lockedRef.current) {
         e.preventDefault();
       }
     };
