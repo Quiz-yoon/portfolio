@@ -14,6 +14,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
   const lockedRef = useRef(true);
   const rafRef = useRef<number | null>(null);
   const lastTimeRef = useRef(-1);
+  const touchStartY = useRef(0);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -50,38 +51,67 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     };
   }, []);
 
+  const handleDelta = useCallback((deltaY: number) => {
+    // Re-lock when scrolled back to the very top
+    if (!lockedRef.current && window.scrollY === 0 && deltaY < 0) {
+      lockedRef.current = true;
+      progressRef.current = 0;
+      lastTimeRef.current = -1;
+      scheduleUpdate();
+    }
+
+    if (!lockedRef.current) return false;
+
+    const step = deltaY / 800;
+    progressRef.current = Math.min(Math.max(progressRef.current + step, 0), 1);
+    scheduleUpdate();
+
+    if (progressRef.current >= 1) {
+      lockedRef.current = false;
+    }
+    return true;
+  }, [scheduleUpdate]);
+
+  // Wheel events (desktop)
   useEffect(() => {
     if (!isReady) return;
 
     const onWheel = (e: WheelEvent) => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      // Re-lock when scrolled back to the very top
-      if (!lockedRef.current && window.scrollY === 0 && e.deltaY < 0) {
-        lockedRef.current = true;
-        progressRef.current = 0;
-        lastTimeRef.current = -1;
-        scheduleUpdate();
-      }
-
-      if (!lockedRef.current) return;
-
-      e.preventDefault();
-
-      const step = e.deltaY / 800;
-      progressRef.current = Math.min(Math.max(progressRef.current + step, 0), 1);
-      scheduleUpdate();
-
-      if (progressRef.current >= 1) {
-        lockedRef.current = false;
+      if (!containerRef.current) return;
+      if (handleDelta(e.deltaY)) {
+        e.preventDefault();
       }
     };
 
     window.addEventListener("wheel", onWheel, { passive: false });
-
     return () => window.removeEventListener("wheel", onWheel);
-  }, [isReady, scheduleUpdate]);
+  }, [isReady, handleDelta]);
+
+  // Touch events (mobile)
+  useEffect(() => {
+    if (!isReady) return;
+
+    const onTouchStart = (e: TouchEvent) => {
+      touchStartY.current = e.touches[0].clientY;
+    };
+
+    const onTouchMove = (e: TouchEvent) => {
+      if (!containerRef.current) return;
+      const deltaY = touchStartY.current - e.touches[0].clientY;
+      touchStartY.current = e.touches[0].clientY;
+      if (handleDelta(deltaY)) {
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener("touchstart", onTouchStart, { passive: true });
+    window.addEventListener("touchmove", onTouchMove, { passive: false });
+
+    return () => {
+      window.removeEventListener("touchstart", onTouchStart);
+      window.removeEventListener("touchmove", onTouchMove);
+    };
+  }, [isReady, handleDelta]);
 
   useEffect(() => {
     if (isReady) scheduleUpdate();
