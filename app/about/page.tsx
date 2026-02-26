@@ -34,12 +34,14 @@ export default function AboutPage() {
       <div className="mx-auto flex items-start gap-[48px]" style={{ maxWidth: "992px" }}>
       <div className="min-w-0 flex-1 max-w-[760px] pt-16 md:pt-[80px]">
         {/* Scroll Video */}
-        <ScrollVideo src="/videos/도_왼쪽_회전_영상_생성.mp4" />
+        <div id="intro">
+          <ScrollVideo src="/videos/도_왼쪽_회전_영상_생성.mp4" />
+        </div>
 
         {/* Content wrapper - covers sticky video */}
         <div className="relative z-30 bg-white pt-12 md:pt-[80px]">
         {/* Intro */}
-        <section id="intro" className="scroll-mt-[80px]">
+        <section>
           <div>
             <p className="text-[13.5px] text-[#8E8E93]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
               {aboutData.role}
