@@ -25,6 +25,14 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     video.addEventListener("loadeddata", markReady);
     if (video.readyState >= 1) markReady();
 
+    // Force load on mobile browsers
+    video.load();
+    // Brief play/pause to trigger frame decoding on mobile
+    video.play().then(() => {
+      video.pause();
+      video.currentTime = 0;
+    }).catch(() => {});
+
     // Fallback: show video after 2s even if metadata hasn't loaded
     const timeout = setTimeout(markReady, 2000);
 
@@ -128,7 +136,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
 
   return (
     <div ref={containerRef} className="sticky top-0 z-20 w-full overflow-hidden rounded-2xl bg-[#fafafa]" style={{ aspectRatio: "16 / 9" }}>
-      <div className="flex h-full items-center justify-center pt-36">
+      <div className="flex h-full items-center justify-center pt-8 md:pt-36">
         <div
           className="relative w-[38%] max-w-[300px] min-w-[160px] overflow-hidden rounded-2xl"
           style={{ opacity: isReady ? 1 : 0, transition: "opacity 0.3s ease" }}
