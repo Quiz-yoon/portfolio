@@ -117,7 +117,7 @@ export default function Sidebar() {
         />
       )}
 
-      <aside className={`fixed left-0 top-0 z-40 flex h-screen w-[250px] flex-col bg-[#F7F7FA] px-4 pt-6 pb-4 text-[#8E8E93] transition-transform duration-300 ease-in-out ${mobileOpen ? "translate-x-0" : "-translate-x-full"} md:z-10 md:translate-x-0`}>
+      <aside className={`fixed left-0 top-0 z-40 flex h-screen w-[250px] flex-col bg-[#F7F7FA] px-4 pt-6 pb-4 text-[#8E8E93] transition-transform duration-300 ease-in-out ${mobileOpen ? "translate-x-0" : "-translate-x-full"} md:z-10 md:translate-x-0`} style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
       {/* Close button — mobile only */}
       <button
         onClick={closeMobile}

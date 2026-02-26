@@ -52,7 +52,7 @@ export default function TableOfContents({
 
   if (mobile) {
     return (
-      <nav className="md:hidden">
+      <nav className="md:hidden" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
         <p className="text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Contents
         </p>
@@ -77,7 +77,7 @@ export default function TableOfContents({
   }
 
   return (
-    <nav className="hidden md:block w-[200px] flex-shrink-0 self-stretch">
+    <nav className="hidden md:block w-[200px] flex-shrink-0 self-stretch" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
       <div className="sticky top-[80px]">
         <p className="text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2]">
           Contents

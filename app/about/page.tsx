@@ -55,7 +55,7 @@ export default function AboutPage() {
 
         {/* Philosophy */}
         <section id="philosophy" className="mt-14 scroll-mt-[80px]">
-          <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
+          <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
             Philosophy
           </p>
           <p className="mt-4 whitespace-pre-line text-[14.5px] leading-[1.85] text-[#48484A]">
@@ -65,7 +65,7 @@ export default function AboutPage() {
 
         {/* Interests */}
         <section id="interests" className="mt-14 scroll-mt-[80px]">
-          <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]">
+          <p className="text-[10.5px] font-medium uppercase tracking-widest text-[#AEAEB2]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
             Interests
           </p>
           <div className="mt-4 flex flex-wrap gap-2">
