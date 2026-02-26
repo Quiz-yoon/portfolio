@@ -3,7 +3,7 @@
 import { useState, useRef, KeyboardEvent, ClipboardEvent } from "react";
 import { useLocale } from "@/lib/locale-context";
 
-const CODE_LENGTH = 8;
+const CODE_LENGTH = 4;
 
 export default function PasswordGate({ children, onUnlock }: { children: React.ReactNode; onUnlock?: (unlocked: boolean) => void }) {
   const { locale } = useLocale();
@@ -94,9 +94,9 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
       </div>
 
       {/* Password overlay */}
-      <div className="absolute inset-0 flex items-start justify-center pt-[120px]" style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 30%, white 60%)" }}>
-        <div className="w-full max-w-[760px] px-5 md:px-0">
-          <div className="flex flex-col items-center px-5 py-8 text-center md:px-8 md:py-10">
+      <div className="absolute inset-0 flex items-start justify-center pt-[80px] md:pt-[120px]" style={{ background: "linear-gradient(to bottom, transparent 0%, rgba(255,255,255,0.9) 30%, white 60%)" }}>
+        <div className="w-full max-w-[760px] px-4 md:px-0">
+          <div className="flex flex-col items-center px-3 py-6 text-center md:px-8 md:py-10">
             <p className="text-[15px] font-medium text-[#1C1C1E]">
               {isKo ? "보호된 콘텐츠입니다" : "This content is protected"}
             </p>
@@ -106,7 +106,7 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
                 : "The detailed case study is under NDA. Please enter the password to view."}
             </p>
 
-            <div className="mt-6 flex gap-2">
+            <div className="mt-6 flex gap-1.5 md:gap-2">
               {digits.map((d, i) => (
                 <input
                   key={i}
