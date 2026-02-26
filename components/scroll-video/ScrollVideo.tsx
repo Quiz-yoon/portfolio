@@ -88,7 +88,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     <div ref={containerRef} className="sticky top-0 z-20 w-full overflow-hidden rounded-2xl bg-[#fafafa]" style={{ aspectRatio: "16 / 9" }}>
       <div className="flex h-full items-center justify-center pt-36">
         <div
-          className="relative max-w-[300px] overflow-hidden rounded-2xl"
+          className="relative w-[38%] max-w-[300px] min-w-[160px] overflow-hidden rounded-2xl"
           style={{ opacity: isReady ? 1 : 0, transition: "opacity 0.3s ease" }}
         >
           <video
