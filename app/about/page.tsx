@@ -5,6 +5,7 @@ import { ArrowUpRight } from "lucide-react";
 import { useLocale } from "@/lib/locale-context";
 import { aboutData, experienceData } from "@/lib/data";
 import TableOfContents from "@/components/case-study/TableOfContents";
+import ScrollVideo from "@/components/scroll-video/ScrollVideo";
 
 export default function AboutPage() {
   const { locale } = useLocale();
@@ -32,6 +33,11 @@ export default function AboutPage() {
     <main className="mx-auto w-full max-w-[1400px] px-5 pb-20 md:px-[80px]">
       <div className="mx-auto flex items-start gap-[48px]" style={{ maxWidth: "992px" }}>
       <div className="min-w-0 flex-1 max-w-[760px] pt-16 md:pt-[80px]">
+        {/* Scroll Video */}
+        <ScrollVideo src="/videos/도_왼쪽_회전_영상_생성.mp4" />
+
+        {/* Content wrapper - covers sticky video */}
+        <div className="relative z-30 bg-white pt-12 md:pt-[80px]">
         {/* Intro */}
         <section id="intro" className="scroll-mt-[80px]">
           <div>
@@ -122,8 +128,7 @@ export default function AboutPage() {
           </div>
         </section>
 
-
-
+        </div>
         {/* Mobile TOC */}
         <div className="mb-16 md:hidden">
           <TableOfContents sections={aboutSections} mobile />
