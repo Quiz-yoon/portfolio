@@ -75,7 +75,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
 
         {/* Mobile TOC — below hero */}
         <div className="mb-16">
-          <TableOfContents sections={study.sections} mobile />
+          <TableOfContents key={`mobile-${gateUnlocked}`} sections={study.sections} mobile />
         </div>
 
         <PasswordGate onUnlock={setGateUnlocked}>
@@ -139,7 +139,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
       </div>
 
       {/* Right TOC */}
-      <TableOfContents sections={study.sections} />
+      <TableOfContents key={`desktop-${gateUnlocked}`} sections={study.sections} />
     </div>
   );
 }
