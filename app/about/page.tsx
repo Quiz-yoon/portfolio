@@ -41,10 +41,10 @@ export default function AboutPage() {
         {/* Intro */}
         <section id="intro" className="scroll-mt-[80px]">
           <div>
-            <p className="text-[13.5px] text-[#8E8E93]">
+            <p className="text-[13.5px] text-[#8E8E93]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
               {aboutData.role}
             </p>
-            <h1 className="mt-4 mb-12 text-[32px] font-medium leading-[1.3] text-[#1C1C1E] md:text-[48px]">
+            <h1 className="mt-4 mb-12 text-[32px] font-medium leading-[1.3] text-[#1C1C1E] md:text-[48px]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
               Quiz Yoon
             </h1>
             <p className="text-[16px] leading-[1.7] text-[#48484A]">
