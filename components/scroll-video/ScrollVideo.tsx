@@ -67,7 +67,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     };
   }, []);
 
-  const handleDelta = useCallback((deltaY: number) => {
+  const handleDelta = useCallback((deltaY: number, sensitivity = 800) => {
     // Re-lock when scrolled back to the very top
     if (!lockedRef.current && window.scrollY === 0 && deltaY < 0) {
       lockedRef.current = true;
@@ -78,7 +78,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
 
     if (!lockedRef.current) return false;
 
-    const step = deltaY / 800;
+    const step = deltaY / sensitivity;
     progressRef.current = Math.min(Math.max(progressRef.current + step, 0), 1);
     scheduleUpdate();
 
@@ -114,7 +114,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
       if (!containerRef.current) return;
       const deltaY = touchStartY.current - e.touches[0].clientY;
       touchStartY.current = e.touches[0].clientY;
-      if (isReady && handleDelta(deltaY)) {
+      if (isReady && handleDelta(deltaY, 200)) {
         e.preventDefault();
       } else if (!isReady && lockedRef.current) {
         e.preventDefault();
