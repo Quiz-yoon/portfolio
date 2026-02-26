@@ -12,6 +12,8 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
   const [isReady, setIsReady] = useState(false);
   const progressRef = useRef(0);
   const lockedRef = useRef(true);
+  const rafRef = useRef<number | null>(null);
+  const lastTimeRef = useRef(-1);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -24,14 +26,29 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     return () => video.removeEventListener("loadedmetadata", handleLoadedMetadata);
   }, []);
 
-  const updateVideo = useCallback(() => {
-    const video = videoRef.current;
-    if (!video || !isReady) return;
+  const scheduleUpdate = useCallback(() => {
+    if (rafRef.current !== null) return;
+    rafRef.current = requestAnimationFrame(() => {
+      rafRef.current = null;
+      const video = videoRef.current;
+      if (!video || !isReady) return;
 
-    const endTime = (video.duration / 10) + 0.3;
-    const p = Math.min(Math.max(progressRef.current, 0), 1);
-    video.currentTime = endTime - (p * endTime);
+      const endTime = (video.duration / 10) + 0.3;
+      const p = Math.min(Math.max(progressRef.current, 0), 1);
+      const newTime = Math.round((endTime - p * endTime) * 100) / 100;
+
+      if (Math.abs(newTime - lastTimeRef.current) > 0.01) {
+        lastTimeRef.current = newTime;
+        video.currentTime = newTime;
+      }
+    });
   }, [isReady]);
+
+  useEffect(() => {
+    return () => {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isReady) return;
@@ -51,7 +68,7 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
 
       const step = e.deltaY / 800;
       progressRef.current = Math.min(Math.max(progressRef.current + step, 0), 1);
-      updateVideo();
+      scheduleUpdate();
 
       if (progressRef.current >= 1) {
         lockedRef.current = false;
@@ -61,11 +78,11 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     window.addEventListener("wheel", onWheel, { passive: false });
 
     return () => window.removeEventListener("wheel", onWheel);
-  }, [isReady, updateVideo]);
+  }, [isReady, scheduleUpdate]);
 
   useEffect(() => {
-    if (isReady) updateVideo();
-  }, [isReady, updateVideo]);
+    if (isReady) scheduleUpdate();
+  }, [isReady, scheduleUpdate]);
 
   return (
     <div ref={containerRef} className="sticky top-0 z-20 w-full overflow-hidden rounded-2xl bg-[#fafafa]" style={{ aspectRatio: "16 / 9" }}>
