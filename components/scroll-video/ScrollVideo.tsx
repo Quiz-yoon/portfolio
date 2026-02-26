@@ -71,9 +71,6 @@ export default function ScrollVideo({ src }: ScrollVideoProps) {
     // Re-lock when scrolled back to the very top
     if (!lockedRef.current && window.scrollY === 0 && deltaY < 0) {
       lockedRef.current = true;
-      progressRef.current = 0;
-      lastTimeRef.current = -1;
-      scheduleUpdate();
     }
 
     if (!lockedRef.current) return false;

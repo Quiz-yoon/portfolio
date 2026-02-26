@@ -35,7 +35,7 @@ export default function AboutPage() {
       <div className="min-w-0 flex-1 max-w-[760px] pt-16 md:pt-[80px]">
         {/* Scroll Video */}
         <div id="intro">
-          <ScrollVideo src="/videos/도_왼쪽_회전_영상_생성.mp4" />
+          <ScrollVideo src="/videos/scroll-intro.mp4" />
         </div>
 
         {/* Content wrapper - covers sticky video */}
