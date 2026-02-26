@@ -9,7 +9,7 @@ interface TeamCreditsProps {
 
 export default function TeamCredits({ team }: TeamCreditsProps) {
   return (
-    <section className="mx-auto max-w-[800px] pt-10">
+    <section className="mx-auto max-w-[800px] pt-10" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
       <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2">
         {team.map((group) => (
           <div key={group.role}>

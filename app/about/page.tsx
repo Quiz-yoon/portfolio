@@ -103,7 +103,7 @@ export default function AboutPage() {
 
                 {/* Description + Highlights + Tags */}
                 <div className="mt-4">
-                  <p className="text-[16px] font-medium text-[#1C1C1E]">
+                  <p className="text-[16px] font-medium text-[#1C1C1E]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
                     {exp.role}
                   </p>
                   <p className="mt-1.5 text-[14.5px] leading-[1.75] text-[#636366]">

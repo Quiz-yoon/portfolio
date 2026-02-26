@@ -35,7 +35,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
         {/* Hero */}
         <section className={`mb-16 md:mb-[100px] ${!study.cover ? "pt-16 md:pt-[80px]" : ""}`}>
           <div>
-            <p className="text-[13.5px] text-[#8E8E93]">
+            <p className="text-[13.5px] text-[#8E8E93]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
               {study.title}
             </p>
             <h1 className="mt-4 mb-12 text-[28px] font-medium leading-[1.3] text-[#1C1C1E] md:text-[48px]">
@@ -52,7 +52,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
 
           {/* Project Overview */}
           <div className="pt-16">
-            <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2">
+            <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
               <div>
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Year</p>
                 <p className="mt-1 text-[16px] text-[#8E8E93]">{study.period}</p>
@@ -111,7 +111,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               )}
 
               {/* Text */}
-                <p className="text-[14px] text-[#8E8E93]">
+                <p className="text-[14px] text-[#8E8E93]" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
                   {section.labelEn || section.label}
                 </p>
                 <h2 className="mt-3 text-[22px] font-semibold leading-[1.5] text-[#1C1C1E] md:text-[28px]">
