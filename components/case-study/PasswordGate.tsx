@@ -119,7 +119,7 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
                   onKeyDown={(e) => handleKeyDown(i, e)}
                   onPaste={i === 0 ? handlePaste : undefined}
                   disabled={loading}
-                  className="h-[48px] w-[48px] rounded-lg border border-[#E5E5EA] bg-white text-center text-[18px] font-medium text-[#1C1C1E] shadow-sm outline-none transition-colors focus:border-[#007AFF] disabled:opacity-40"
+                  className="h-[48px] w-[48px] rounded-lg border border-[#D1D1D6] bg-white text-center text-[18px] font-medium text-[#1C1C1E] shadow-sm outline-none transition-colors focus:border-[#007AFF] disabled:opacity-40"
                 />
               ))}
             </div>
