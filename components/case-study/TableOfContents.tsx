@@ -38,6 +38,10 @@ export default function TableOfContents({
 
   const handleClick = (id: string) => {
     setActiveId(id);
+    if (id === "intro") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });

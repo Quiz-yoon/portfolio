@@ -111,7 +111,7 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
                 <input
                   key={i}
                   ref={(el) => { inputsRef.current[i] = el; }}
-                  type="password"
+                  type="text"
                   inputMode="text"
                   maxLength={1}
                   value={d}
@@ -119,6 +119,10 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
                   onKeyDown={(e) => handleKeyDown(i, e)}
                   onPaste={i === 0 ? handlePaste : undefined}
                   disabled={loading}
+                  autoComplete="off"
+                  data-1p-ignore
+                  data-lpignore="true"
+                  style={{ WebkitTextSecurity: "disc" } as React.CSSProperties}
                   className="h-[48px] w-[48px] rounded-lg border border-[#D1D1D6] bg-white text-center text-[18px] font-medium text-[#1C1C1E] shadow-sm outline-none transition-colors focus:border-[#007AFF] disabled:opacity-40"
                 />
               ))}
