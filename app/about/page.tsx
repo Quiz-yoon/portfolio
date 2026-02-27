@@ -131,10 +131,6 @@ export default function AboutPage() {
         </section>
 
         </div>
-        {/* Mobile TOC */}
-        <div className="mb-16 md:hidden">
-          <TableOfContents sections={aboutSections} mobile />
-        </div>
       </div>
 
       {/* Right TOC */}

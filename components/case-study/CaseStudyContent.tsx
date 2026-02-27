@@ -69,14 +69,14 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Role</p>
                 <p className="mt-1 text-[16px] text-[#8E8E93]">{study.role}</p>
               </div>
+              <div>
+                <p className="text-[16px] font-medium text-[#1C1C1E]">Country</p>
+                <p className="mt-1 text-[16px] text-[#8E8E93]">{study.country}</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Mobile TOC — below hero */}
-        <div className="mb-16">
-          <TableOfContents key={`mobile-${gateUnlocked}`} sections={study.sections} mobile />
-        </div>
 
         <PasswordGate onUnlock={setGateUnlocked}>
         {/* Sections */}

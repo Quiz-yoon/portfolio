@@ -255,6 +255,7 @@ export interface CaseStudy {
   role: string;
   period: string;
   category: string;
+  country: string;
   impact: string;
   impactKo?: string;
   cover: string;
@@ -275,6 +276,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Designer",
     period: "2023",
     category: "E-Commerce",
+    country: "🇹🇼 Taiwan",
     impact: "Wishlist conversion rate increased by 34%",
     impactKo: "위시리스트 전환율 34% 증가",
     cover: "/images/Frame 2085666081.png",
@@ -333,6 +335,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Designer",
     period: "2023",
     category: "E-Commerce",
+    country: "🇹🇭 Thailand",
     impact: "Order completion rate improved by 12%",
     impactKo: "주문 완료율 12% 개선",
     cover: "/images/Frame 2085666081.png",
@@ -392,6 +395,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Designer",
     period: "2024",
     category: "Design System",
+    country: "🇹🇼 Taiwan, 🇹🇭 Thailand",
     impact: "Component adoption rate reached 85% across 4 product teams",
     impactKo: "4개 제품 팀에서 컴포넌트 채택률 85% 달성",
     cover: "/images/Frame 2085666081.png",
@@ -451,6 +455,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Co-founder & Designer",
     period: "2022",
     category: "Kids Fashion",
+    country: "🇰🇷 Korea",
     impact: "Launched MVP and acquired 2,000 early users",
     impactKo: "MVP 런칭 후 초기 사용자 2,000명 확보",
     cover: "/images/Frame 2085666081.png",
@@ -510,6 +515,7 @@ export const caseStudies: CaseStudy[] = [
     role: "Product Designer",
     period: "2020",
     category: "Social Commerce",
+    country: "🇰🇷 Korea",
     impact: "Social commerce feature drove 28% of total revenue",
     impactKo: "소셜 커머스 기능이 전체 매출의 28%를 견인",
     cover: "/images/Frame 2085666081.png",
