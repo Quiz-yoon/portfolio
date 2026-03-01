@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-type TocSection = { id: string; label: string; labelEn?: string };
+type TocSection = { id: string; label: string; labelEn?: string; group?: string };
 
 export default function TableOfContents({
   sections,
@@ -87,20 +87,29 @@ export default function TableOfContents({
           Contents
         </p>
         <ul className="mt-4 flex flex-col gap-0">
-          {sections.map((section) => (
-            <li key={section.id}>
-              <button
-                onClick={() => handleClick(section.id)}
-                className={`w-full border-l-2 py-2.5 pl-4 pr-2 text-left text-[13.5px] transition-colors duration-150 ${
-                  activeId === section.id
-                    ? "border-[#1C1C1E] font-semibold text-[#1C1C1E]"
-                    : "border-[#E5E5EA] text-[#8E8E93] hover:text-[#1C1C1E]"
-                }`}
-              >
-                {section.labelEn || section.label}
-              </button>
-            </li>
-          ))}
+          {sections.map((section, i) => {
+            const prevGroup = i > 0 ? sections[i - 1].group : undefined;
+            const showGroup = section.group && section.group !== prevGroup;
+            return (
+              <li key={section.id}>
+                {showGroup && (
+                  <p className="pb-1 pl-4 pt-4 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2] first:pt-0">
+                    {section.group}
+                  </p>
+                )}
+                <button
+                  onClick={() => handleClick(section.id)}
+                  className={`w-full border-l-2 py-2.5 pl-4 pr-2 text-left text-[13.5px] transition-colors duration-150 ${
+                    activeId === section.id
+                      ? "border-[#1C1C1E] font-semibold text-[#1C1C1E]"
+                      : "border-[#E5E5EA] text-[#8E8E93] hover:text-[#1C1C1E]"
+                  }`}
+                >
+                  {section.labelEn || section.label}
+                </button>
+              </li>
+            );
+          })}
         </ul>
       </div>
     </nav>

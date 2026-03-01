@@ -42,11 +42,22 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
               {isKo && study.impactKo ? study.impactKo : study.impact}
             </h1>
             {study.sections[0] && (
-              <p className="text-[16px] leading-[1.7] text-[#48484A]">
-                {isKo
-                  ? study.sections[0].content
-                  : (study.sections[0].contentEn || study.sections[0].content)}
-              </p>
+              <div className="text-[16px] leading-[1.7] text-[#636366]">
+                {(() => {
+                  const text = isKo
+                    ? study.sections[0].content
+                    : (study.sections[0].contentEn || study.sections[0].content);
+                  const paragraphs = text.split("\n\n");
+                  return paragraphs.map((para, i) => {
+                    const isSubHeading = para.length < 100 && !para.endsWith(".") && !para.endsWith("?") && !para.endsWith("!") && !para.endsWith("。");
+                    const prevIsSubHeading = i > 0 && paragraphs[i - 1].length < 100 && !paragraphs[i - 1].endsWith(".") && !paragraphs[i - 1].endsWith("?") && !paragraphs[i - 1].endsWith("!") && !paragraphs[i - 1].endsWith("。");
+                    if (isSubHeading) {
+                      return <p key={i} className={`font-semibold text-[#1C1C1E] ${i === 0 ? "" : "mt-8"}`}>{para}</p>;
+                    }
+                    return <p key={i} className={prevIsSubHeading ? "mt-1" : i === 0 ? "" : "mt-6"}>{para}</p>;
+                  });
+                })()}
+              </div>
             )}
           </div>
 
@@ -73,6 +84,12 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Country</p>
                 <p className="mt-1 text-[16px] text-[#8E8E93]">{study.country}</p>
               </div>
+              {study.contribution && (
+                <div>
+                  <p className="text-[16px] font-medium text-[#1C1C1E]">My Contribution</p>
+                  <p className="mt-1 text-[16px] text-[#8E8E93]">{study.contribution}</p>
+                </div>
+              )}
             </div>
           </div>
         </section>
@@ -117,9 +134,20 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                 <h2 className="mt-3 text-[22px] font-semibold leading-[1.5] text-[#1C1C1E] md:text-[28px]">
                   {isKo ? section.headline : (section.headlineEn || section.headline)}
                 </h2>
-                <p className="mt-8 text-[16px] leading-[1.7] text-[#48484A]">
-                  {isKo ? section.content : (section.contentEn || section.content)}
-                </p>
+                <div className="mt-8 text-[16px] leading-[1.7] text-[#636366]">
+                  {(() => {
+                    const text = isKo ? section.content : (section.contentEn || section.content);
+                    const paragraphs = text.split("\n\n");
+                    return paragraphs.map((para, i) => {
+                      const isSubHeading = para.length < 100 && !para.endsWith(".") && !para.endsWith("?") && !para.endsWith("!") && !para.endsWith("。");
+                      const prevIsSubHeading = i > 0 && paragraphs[i - 1].length < 100 && !paragraphs[i - 1].endsWith(".") && !paragraphs[i - 1].endsWith("?") && !paragraphs[i - 1].endsWith("!") && !paragraphs[i - 1].endsWith("。");
+                      if (isSubHeading) {
+                        return <p key={i} className={`font-semibold text-[#1C1C1E] ${i === 0 ? "" : "mt-8"}`}>{para}</p>;
+                      }
+                      return <p key={i} className={prevIsSubHeading ? "mt-1" : i === 0 ? "" : "mt-6"}>{para}</p>;
+                    });
+                  })()}
+                </div>
               </div>
             </section>
           ))}
