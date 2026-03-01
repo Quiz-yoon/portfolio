@@ -17,7 +17,7 @@ export default function ProjectNavigation({
   if (!prevProject && !nextProject) return null;
 
   return (
-    <nav className="mx-auto max-w-[800px] border-t border-[#D1D1D6] pt-12" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
+    <nav className="mx-auto hidden max-w-[800px] border-t border-[#D1D1D6] pt-12 md:block" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
       <div className="flex w-full flex-col gap-8 md:flex-row md:justify-between">
         <div>
           {prevProject && (
