@@ -94,7 +94,7 @@ export default function TableOfContents({
             <li key={section.id}>
               <button
                 onClick={() => handleClick(section.id)}
-                className={`w-full border-l-2 py-2.5 pl-4 pr-2 text-left text-[13.5px] transition-colors duration-150 ${
+                className={`w-full border-l-2 py-2 pl-4 pr-2 text-left text-[13.5px] transition-colors duration-150 ${
                   activeId === section.id
                     ? "border-[#1C1C1E] font-semibold text-[#1C1C1E]"
                     : "border-[#E5E5EA] text-[#8E8E93] hover:text-[#1C1C1E]"
@@ -130,7 +130,7 @@ export default function TableOfContents({
                 )}
                 <button
                   onClick={() => !isDisabled && handleClick(section.id)}
-                  className={`w-full border-l-2 py-2.5 pl-4 pr-2 text-left text-[13.5px] transition-colors duration-150 ${
+                  className={`w-full border-l-2 py-2 pl-4 pr-2 text-left text-[13.5px] transition-colors duration-150 ${
                     isDisabled
                       ? "border-[#E5E5EA] text-[#E5E5EA] cursor-default"
                       : activeId === section.id
