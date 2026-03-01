@@ -470,7 +470,6 @@ export const caseStudies: CaseStudy[] = [
     sections: [
       {
         id: "context",
-        group: "Launch 1",
         label: "컨텍스트",
         labelEn: "Context",
         headline: "대만에서 태국으로 확장하며 두 가지 핵심 문제를 해결했다",
