@@ -66,28 +66,28 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
             <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2" style={{ fontFamily: "var(--font-poppins), sans-serif" }}>
               <div>
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Year</p>
-                <p className="mt-1 text-[16px] text-[#8E8E93]">{study.period}</p>
+                <p className="mt-1 text-[16px] text-[#636366]">{study.period}</p>
               </div>
               <div>
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Company</p>
-                <p className="mt-1 text-[16px] text-[#8E8E93]">{study.company}</p>
+                <p className="mt-1 text-[16px] text-[#636366]">{study.company}</p>
               </div>
               <div>
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Category</p>
-                <p className="mt-1 text-[16px] text-[#8E8E93]">{study.category}</p>
+                <p className="mt-1 text-[16px] text-[#636366]">{study.category}</p>
               </div>
               <div>
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Role</p>
-                <p className="mt-1 text-[16px] text-[#8E8E93]">{study.role}</p>
+                <p className="mt-1 text-[16px] text-[#636366]">{study.role}</p>
               </div>
               <div>
                 <p className="text-[16px] font-medium text-[#1C1C1E]">Country</p>
-                <p className="mt-1 text-[16px] text-[#8E8E93]">{study.country}</p>
+                <p className="mt-1 text-[16px] text-[#636366]">{study.country}</p>
               </div>
               {study.contribution && (
                 <div>
                   <p className="text-[16px] font-medium text-[#1C1C1E]">My Contribution</p>
-                  <p className="mt-1 text-[16px] text-[#8E8E93]">{study.contribution}</p>
+                  <p className="mt-1 text-[16px] text-[#636366]">{study.contribution}</p>
                 </div>
               )}
             </div>

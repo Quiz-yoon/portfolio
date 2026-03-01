@@ -13,10 +13,10 @@ export default function TeamCredits({ team }: TeamCreditsProps) {
       <div className="grid grid-cols-1 gap-x-16 gap-y-8 md:grid-cols-2">
         {team.map((group) => (
           <div key={group.role}>
-            <p className="text-[16px] text-[#8E8E93]">
+            <p className="text-[16px] font-medium text-[#1C1C1E]">
               {group.role}
             </p>
-            <p className="mt-1 text-[16px] font-medium text-[#1C1C1E]">
+            <p className="mt-1 text-[16px] text-[#636366]">
               {group.members.map((name, i) => (
                 <span key={name}>
                   {name.startsWith("* ") ? name.slice(2) : name}
