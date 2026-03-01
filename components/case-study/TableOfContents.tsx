@@ -37,7 +37,18 @@ export default function TableOfContents({
       if (el) observer.observe(el);
     });
 
-    return () => observer.disconnect();
+    const handleScroll = () => {
+      if (isScrollingRef.current) return;
+      if (window.scrollY < 200) {
+        setActiveId("intro");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [sections]);
 
   const handleClick = (id: string) => {

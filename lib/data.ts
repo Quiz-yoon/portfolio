@@ -611,10 +611,9 @@ export const caseStudies: CaseStudy[] = [
       },
     ],
     team: [
-      { role: "Product Designer", members: ["Heejin Yoon"] },
-      { role: "Product Manager (🇹🇭)", members: ["Ta"] },
-      { role: "Product Manager (🇰🇷)", members: ["Yeonji Kim", "Boreum Kim"] },
-      { role: "Product Designer", members: ["Haeji"] },
+      { role: "Product Designer", members: ["Heejin Yoon 🇰🇷", "Haeji 🇹🇭"] },
+      { role: "Product Manager", members: ["Ta 🇹🇭"] },
+      { role: "Product Owner", members: ["Yeonji Kim 🇰🇷", "Boreum Kim 🇰🇷"] },
     ],
     prevProject: { title: "Design System", slug: "design-system" },
     nextProject: { title: "Bunker Kids", slug: "bunker-kids" },
