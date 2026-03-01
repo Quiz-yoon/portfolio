@@ -113,6 +113,7 @@ export default function PasswordGate({ children, onUnlock }: { children: React.R
                   ref={(el) => { inputsRef.current[i] = el; }}
                   type="text"
                   inputMode="numeric"
+                  pattern="[0-9]*"
                   maxLength={1}
                   value={d}
                   onChange={(e) => handleChange(i, e.target.value)}
