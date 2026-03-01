@@ -260,6 +260,8 @@ export interface CaseStudy {
   contribution?: string;
   impact: string;
   impactKo?: string;
+  intro?: string;
+  introEn?: string;
   cover: string;
   sections: CaseStudySection[];
   team: {
@@ -328,6 +330,7 @@ export const caseStudies: CaseStudy[] = [
       { role: "QA Engineer", members: ["Yejin Seo"] },
       { role: "Data Analyst", members: ["Donghun Cho"] },
     ],
+    prevProject: { title: "Gift Voucher Localization", slug: "gift-voucher-localization" },
     nextProject: { title: "Ordersheet Improvement", slug: "ordersheet-improvement" },
   },
   {
@@ -448,7 +451,7 @@ export const caseStudies: CaseStudy[] = [
       { role: "Data Analyst", members: ["Taehyun Kim"] },
     ],
     prevProject: { title: "Ordersheet Improvement", slug: "ordersheet-improvement" },
-    nextProject: { title: "Gift Voucher Localization", slug: "gift-voucher-localization" },
+    nextProject: { title: "Bunker Kids", slug: "bunker-kids" },
   },
   {
     slug: "gift-voucher-localization",
@@ -459,8 +462,10 @@ export const caseStudies: CaseStudy[] = [
     category: "E-Commerce, Gift Shop",
     country: "🇹🇭 Thailand",
     contribution: "Problem definition, solution design, UT design and analysis",
-    impact: "Stabilizing Redemption Experience to Increase Gift Repurchase: 0 Abuse Cases, 90% Time Awareness",
-    impactKo: "리딤 경험 안정화로 선물 재구매 증가 : 어뷰징 0건, 시간 인지율 90%",
+    impact: "From Thailand Market Launch to 00% Decrease in Gift Usage CS Cases, and 00% Increase in Gift Purchase Rate After Redemption",
+    impactKo: "태국 시장 런칭부터 선물 사용 관련 CS 00% 감소, 그리고 선물 사용 후 선물 구매율 00% 증가까지",
+    intro: "대만에 런칭된 LINE Gift Shop을 태국 시장으로 확장하는 과정에서 두 가지 핵심 문제를 해결했습니다. 대만과는 완전히 다른 브랜드 파트너들의 매장 환경이 출시 전과 출시 후에 각각 다른 문제를 만들었습니다. 출시 전에는 기술적 제약을, 출시 후에는 사용자 인지 문제를 해결했습니다.",
+    introEn: "We solved two critical problems while expanding LINE Gift Shop, launched in Taiwan, to the Thailand market. The brand partners' store environment, completely different from Taiwan, created distinct challenges before and after launch. We addressed technical constraints pre-launch and user awareness issues post-launch.",
     cover: "/images/Frame 2085666081.png",
     sections: [
       {
@@ -470,8 +475,8 @@ export const caseStudies: CaseStudy[] = [
         labelEn: "Context",
         headline: "대만에서 태국으로 확장하며 두 가지 핵심 문제를 해결했다",
         headlineEn: "Solved two critical problems while expanding from Taiwan to Thailand",
-        content: "LINE Gift Shop을 대만에서 태국으로 확장하는 과정에서 두 가지 핵심 문제를 해결했습니다. 태국의 완전히 다른 매장 환경이 출시 전과 출시 후에 각각 다른 문제를 만들었습니다. 출시 전에는 기술적 제약을, 출시 후에는 사용자 인지 문제를 해결했습니다.",
-        contentEn: "We solved two critical problems while expanding LINE Gift Shop from Taiwan to Thailand. Thailand's completely different store environment created distinct challenges before and after launch. We addressed technical constraints pre-launch and user awareness issues post-launch.",
+        content: "문제 1: 출시 전 발견한 기술적 제약 (2024-2025년 초)\n\n태국 매장은 POS 시스템 유무가 혼재된 환경이었습니다. 실시간 확인이 불가능했고, 다중 매장 어뷰징 위험이 있었습니다. 이를 해결하기 위해 15분 자동 완료 시스템과 경험 기반 보안을 설계했습니다. 100개 이상 브랜드 파트너를 대상으로 매장 운영 가이드라인 마련에 참여했습니다. 2025년 4월 출시 후 어뷰징 0건을 달성했습니다.\n\n문제 2: 출시 후 발견한 사용자 시점 인지 문제 (2025년 7-9월)\n\n출시 시 포함한 팝업의 UX writing이 불명확했고 맥락이 부족했습니다. 이로 인해 91건의 CS 케이스가 발생했습니다. 문제를 해결하기 위해 105명을 대상으로 UT를 진행했습니다. 리딤 전 페이지에서 정보를 제공하는 방식으로 개선했습니다. 2025년 12월 런칭 후 시간 인지율이 67%에서 90%로 향상되었고, CS 케이스가 감소했습니다.",
+        contentEn: "Problem 1: Technical Constraints Discovered Pre-Launch (Early 2024-2025)\n\nThai stores had a mixed environment of POS systems. Real-time verification was impossible, creating multi-store abuse risks. We designed a 15-minute auto-complete system and experience-based security. We established store operation guidelines with 100+ brand partners. After April 2025 launch, we achieved 0 abuse cases.\n\nProblem 2: User Timing Awareness Issues Discovered Post-Launch (July-September 2025)\n\nThe popup's UX writing at launch was unclear and lacked context. This resulted in 91 CS cases. We conducted UT with 105 participants. We improved by providing information on the pre-redemption page. After December 2025 launch, time awareness improved from 67% to 90%, and CS cases decreased.",
       },
       {
         id: "problem-discovery-1",
@@ -615,8 +620,7 @@ export const caseStudies: CaseStudy[] = [
       { role: "Product Manager", members: ["Ta 🇹🇭"] },
       { role: "Product Owner", members: ["Yeonji Kim 🇰🇷", "Boreum Kim 🇰🇷"] },
     ],
-    prevProject: { title: "Design System", slug: "design-system" },
-    nextProject: { title: "Bunker Kids", slug: "bunker-kids" },
+    nextProject: { title: "Wishlist Optimization", slug: "wishlist-optimization" },
   },
   {
     slug: "bunker-kids",
@@ -675,7 +679,7 @@ export const caseStudies: CaseStudy[] = [
       { role: "Android Developer", members: ["Sungho Yoo"] },
       { role: "Growth Manager", members: ["Yejin Seo"] },
     ],
-    prevProject: { title: "Gift Voucher Localization", slug: "gift-voucher-localization" },
+    prevProject: { title: "Design System", slug: "design-system" },
     nextProject: { title: "StyleShare", slug: "styleshare" },
   },
   {
@@ -757,10 +761,10 @@ export const sidebarData = {
       id: "line",
       name: "LINE",
       children: [
+        { id: "gift-voucher-localization", name: "Gift voucher localization" },
         { id: "wishlist-optimization", name: "Wishlist optimization" },
         { id: "ordersheet-improvement", name: "Ordersheet improvement" },
         { id: "design-system", name: "Design system" },
-        { id: "gift-voucher-localization", name: "Gift voucher localization" },
       ],
     },
     { id: "bunker-kids", name: "Bunker Kids" },

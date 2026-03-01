@@ -41,24 +41,25 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
             <h1 className="mt-4 mb-12 text-[28px] font-medium leading-[1.3] text-[#1C1C1E] md:text-[48px]">
               {isKo && study.impactKo ? study.impactKo : study.impact}
             </h1>
-            {study.sections[0] && (
-              <div className="text-[16px] leading-[1.7] text-[#636366]">
-                {(() => {
-                  const text = isKo
-                    ? study.sections[0].content
-                    : (study.sections[0].contentEn || study.sections[0].content);
-                  const paragraphs = text.split("\n\n");
-                  return paragraphs.map((para, i) => {
+            {(() => {
+              const introText = study.intro
+                ? (isKo ? study.intro : (study.introEn || study.intro))
+                : (isKo ? study.sections[0]?.content : (study.sections[0]?.contentEn || study.sections[0]?.content));
+              if (!introText) return null;
+              const paragraphs = introText.split("\n\n");
+              return (
+                <div className="text-[16px] leading-[1.7] text-[#636366]">
+                  {paragraphs.map((para, i) => {
                     const isSubHeading = para.length < 100 && !para.endsWith(".") && !para.endsWith("?") && !para.endsWith("!") && !para.endsWith("。");
                     const prevIsSubHeading = i > 0 && paragraphs[i - 1].length < 100 && !paragraphs[i - 1].endsWith(".") && !paragraphs[i - 1].endsWith("?") && !paragraphs[i - 1].endsWith("!") && !paragraphs[i - 1].endsWith("。");
                     if (isSubHeading) {
                       return <p key={i} className={`font-semibold text-[#1C1C1E] ${i === 0 ? "" : "mt-8"}`}>{para}</p>;
                     }
                     return <p key={i} className={prevIsSubHeading ? "mt-1" : i === 0 ? "" : "mt-6"}>{para}</p>;
-                  });
-                })()}
-              </div>
-            )}
+                  })}
+                </div>
+              );
+            })()}
           </div>
 
           {/* Project Overview */}
