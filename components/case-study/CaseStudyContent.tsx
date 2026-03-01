@@ -167,7 +167,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
       </div>
 
       {/* Right TOC */}
-      <TableOfContents key={`desktop-${gateUnlocked}`} sections={study.sections} />
+      <TableOfContents key={`desktop-${gateUnlocked}`} sections={[{ id: "intro", label: "소개", labelEn: "Intro" }, ...study.sections]} />
     </div>
   );
 }

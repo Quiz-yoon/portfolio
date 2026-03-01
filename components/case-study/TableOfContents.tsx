@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 type TocSection = { id: string; label: string; labelEn?: string; group?: string };
 
 export default function TableOfContents({
@@ -11,11 +11,13 @@ export default function TableOfContents({
   mobile?: boolean;
 }) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
+  const isScrollingRef = useRef(false);
 
   useEffect(() => {
     const ids = sections.map((s) => s.id);
     const observer = new IntersectionObserver(
       (entries) => {
+        if (isScrollingRef.current) return;
         const visible = entries
           .filter((e) => e.isIntersecting)
           .sort(
@@ -37,7 +39,21 @@ export default function TableOfContents({
   }, [sections]);
 
   const handleClick = (id: string) => {
+    isScrollingRef.current = true;
     setActiveId(id);
+    let scrollTimer: ReturnType<typeof setTimeout>;
+    const onScroll = () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(() => {
+        isScrollingRef.current = false;
+        window.removeEventListener("scroll", onScroll);
+      }, 150);
+    };
+    window.addEventListener("scroll", onScroll);
+    setTimeout(() => {
+      isScrollingRef.current = false;
+      window.removeEventListener("scroll", onScroll);
+    }, 3000);
     if (id === "intro") {
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -90,10 +106,11 @@ export default function TableOfContents({
           {sections.map((section, i) => {
             const prevGroup = i > 0 ? sections[i - 1].group : undefined;
             const showGroup = section.group && section.group !== prevGroup;
+            const isFirstGroup = showGroup && !sections.slice(0, i).some(s => s.group);
             return (
               <li key={section.id}>
                 {showGroup && (
-                  <p className="pb-1 pl-4 pt-4 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2] first:pt-0">
+                  <p className={`pb-4 pl-4 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2] pt-4`}>
                     {section.group}
                   </p>
                 )}
