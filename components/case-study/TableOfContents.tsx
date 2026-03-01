@@ -6,9 +6,11 @@ type TocSection = { id: string; label: string; labelEn?: string; group?: string 
 export default function TableOfContents({
   sections,
   mobile = false,
+  locked = false,
 }: {
   sections: TocSection[];
   mobile?: boolean;
+  locked?: boolean;
 }) {
   const [activeId, setActiveId] = useState(sections[0]?.id ?? "");
   const isScrollingRef = useRef(false);
@@ -106,20 +108,23 @@ export default function TableOfContents({
           {sections.map((section, i) => {
             const prevGroup = i > 0 ? sections[i - 1].group : undefined;
             const showGroup = section.group && section.group !== prevGroup;
-            const isFirstGroup = showGroup && !sections.slice(0, i).some(s => s.group);
+            const isIntro = section.id === "intro";
+            const isDisabled = locked && !isIntro;
             return (
               <li key={section.id}>
                 {showGroup && (
-                  <p className={`pb-4 pl-4 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2] pt-4`}>
+                  <p className={`pb-4 pl-4 text-[11px] font-medium uppercase tracking-wider text-[#AEAEB2] pt-4 ${isDisabled ? "opacity-30" : ""}`}>
                     {section.group}
                   </p>
                 )}
                 <button
-                  onClick={() => handleClick(section.id)}
+                  onClick={() => !isDisabled && handleClick(section.id)}
                   className={`w-full border-l-2 py-2.5 pl-4 pr-2 text-left text-[13.5px] transition-colors duration-150 ${
-                    activeId === section.id
-                      ? "border-[#1C1C1E] font-semibold text-[#1C1C1E]"
-                      : "border-[#E5E5EA] text-[#8E8E93] hover:text-[#1C1C1E]"
+                    isDisabled
+                      ? "border-[#E5E5EA] text-[#E5E5EA] cursor-default"
+                      : activeId === section.id
+                        ? "border-[#1C1C1E] font-semibold text-[#1C1C1E]"
+                        : "border-[#E5E5EA] text-[#8E8E93] hover:text-[#1C1C1E]"
                   }`}
                 >
                   {section.labelEn || section.label}
