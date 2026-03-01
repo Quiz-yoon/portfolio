@@ -21,12 +21,12 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
         {/* Cover Image */}
         {study.cover && (
           <section className="mb-12 pt-16 md:pt-[80px] md:mb-[80px]">
-            <div className="overflow-hidden rounded-2xl">
+            <div className="overflow-hidden rounded-2xl" style={{ aspectRatio: "4 / 3" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={study.cover}
                 alt={study.title}
-                className="w-full"
+                className="h-full w-full object-cover"
               />
             </div>
           </section>
@@ -117,7 +117,7 @@ export default function CaseStudyContent({ study }: { study: CaseStudy }) {
                   </figure>
                 ))
               ) : (
-                <div className="mb-12 w-full overflow-hidden rounded-2xl md:mb-[80px]" style={{ aspectRatio: "16 / 9" }}>
+                <div className="mb-12 w-full overflow-hidden rounded-2xl md:mb-[80px]" style={{ aspectRatio: "4 / 3" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src="/images/Frame 2085666081.png"
